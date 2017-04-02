@@ -1,0 +1,87 @@
+% OS homework template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Size Separation Spatial Join \\	
+ 	\normalsize Nick Koudas and Kenneth C. Sevcik
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 236}, Winter 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textbf{CS 202}}
+\fancyhead[RE,LO]{Payas Rajan}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{The problem:}\\
+The paper notes that previous methods for doing spatial join operations often needed to replicates the input datasets or intermediate results. Replicating data often leads to storing more data on the disc or in the main memory, therefore it leads to more I/O operations and more disc block reads. Paper also points out that existing join methods were not able to support few predicates if involved in join operations.  
+
+\textbf{The contribution:}\\
+The authors propose a new algorithm to perform spatial join of multiple datasets with no indexes. The algorithm is extension of Filter Tree and includes dynamic hierarchical decomposition of the space to store the spatial data with no repetitions. The algorithm proposes by the authors in some way extends relation join as well by generalizing relational \emph{Sort Megre Join} for multidimensional data which makes its implementation easier.
+
+\textbf{The method:}\\
+The Authors present size separation spatial join which constructs \emph{Filter Tree} dynamically and does not build whole indices. It uses this property to capture large entities at higher levels and small entities as lower level.
+
+Filter tree captures two property for each entity: 
+\begin{itemize}
+	\item Hilbert Value:  Hilbert value of the center of Minimum Bounding Region.
+	\item Level of Filter Tree: Level\emph{(x$_\textrm{\scriptsize l}$,y$_\textrm{\scriptsize l}$,x$_\textrm{\scriptsize h}$,y$_\textrm{\scriptsize h}$) }represents at which level of the filter tree entity resides.
+\end{itemize}
+
+Level for each entity in all datasets is computed and partitioned by keeping data of same level with each other. L+1 pages needed to store this information, where L is the max number of levels in the filter tree. Then sorting is performed for each level file of each dataset so that Hilbert values of entities are monotonically increasing and after that join operation is performed by scanning over all pages at all level, reading one page only once. This algorithm can take advantage by reading each page only once and can operate join operation on that data. The partition of data into hierarchy mainly depends on the size of the data.
+
+Performance of this algorithm can be increased by applying filtering like other existing algorithms which reduces the number of unnecessary operations performed by the join operations. This algorithm uses Dynamic Spatial Bitmaps to perform filtering which is similar to relational bitmap indices join. Size of bitmap depends on the size of level chosen, but there is a trade-off between the size of bitmap and its effectiveness.
+
+\textbf{Comments:}\\
+The paper presents an extension of Filtering tree and generalizing it for the multidimensional data and can be performed on data with no indexes. This methods compare it results with Partition based spatial merge joins and spatial hash joins over different distribution of data with different coverage and it outperforms others.
+
+However, it has some short comings:
+\begin{itemize}
+	\item It the data is very large with many small partition calculation of hilbert center and level can be overhead .
+	
+	\item Does not perform well in case of skewed spatial data.
+
+\end{itemize}
+
+\end{document}

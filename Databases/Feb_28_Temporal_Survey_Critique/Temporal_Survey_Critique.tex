@@ -1,0 +1,77 @@
+% DBMS homework template
+\documentclass[a4paper,11pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Comparision of Access Methods for Time-Evolving Data\\	
+ 	\normalsize Betty Salzberg and Vassilis J. Tsotras
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 236}, Winter 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+\textbf{The problem:}\\
+The paper discusses the need of temporal data since conventional database system is unable to store evolved states of databases from one logical state to other for managing time varying data.  
+
+\textbf{The contribution:}\\
+The authors presents a survey comparing different indexing mechanism proposed  of \emph{Transaction Time}, \emph{Valid Time} and \emph{Bitemporal} databases for efficient access.
+
+\textbf{The method:}\\
+\emph{Transaction Time} stores historical sequences of a database. \emph{Valid Time} stores the present snapshot of a database at a specific time. \emph{Bitemporal} is combines features from both databases. Each tuple in general have a time variant attribute can be represented by \emph{start\_time} and \emph{end\_time}.
+ 
+Performance of queries is measured for worst case using three kind of transaction time queries: \emph{pure-key}, \emph{pure-timeslice} and \emph{range-timeslice}.
+
+\noindent
+\textbf{Transaction-Time} methods can be further classified into:
+
+\emph{Key-Only Methods}: In these methods data is organized/clustered by its key value which make pure-key queries efficiently. Some of the methods are \emph{Reverse Chaining} in which previous version of given key are chained together in reverse chronological order, \emph{Accession Lists} which clusters a given key together based on its timestamp value, \emph{Time Sequence Arrays} which uses 2-D array to store value of key $x$ at time $y$ which makes query time minimal and \emph{C-Lists} similar to accession lists but provide different access and maintenance mechanisms.
+
+\emph{Time-Only Methods}: These methods use some form of maintaining ``history logs'' which is used as a indexing parameter for efficient pure-timeslice queries. \emph{Append-Only Tree} is hybrid of ISAM and B+ tree indexing to implement multiway search, \emph{Time Index} based on B-tree and does indexing on time when any write/update or delete operation is performed, \emph{Differential File Approach} does not create index but stores relational log with sorted timestamp changes in \emph{(time,key,op)} format, \emph{Checkpoint Index} which indexes on the checkpoints periodically on evolving relation, \emph{Archivable Time Index} is improved version of checkpoint index by making checkpoints un-periodic, \emph{Snapshot Index} uses three data structure to provide I/O optimal solution: multilevel index, multilinked structure and hashing function and \emph{Windows method} partitions data into windows and perform indexing. 
+
+\emph{Time-Key Methods}: Data is clustered both by key and time. \emph{R-Tree-Based Methods} old and current data is separated by using \emph{vaccum cleaner} process, indexing in done over both key and time for current data,\emph{B-Tree Based Methods} is also a persistent database which follow same rule of separation, \emph{Write-Once B-Tree}, \emph{Time Split B-Tree}, \emph{Multiversion B-Tree}, \emph{Multiversion Access Structure} , \emph{Exodus and Overlapping B+ Trees} and \emph{Multiattribute Indexes} are some of its example.
+
+\noindent
+\textbf{Valid Time} indexing methods consist of \emph{Metablock Tree}, \emph{External Segment Tree}, \emph{External Interval Tree} and \emph{MAP21} on dynamic collection of interval data.
+
+\noindent
+\textbf{Bitemporal} data consists of snapshots over time and methods used to index these are \emph{M-IVTT}, \emph{Bitemporal Interval Tree} and \emph{Bitemporal R-Tree}.
+
+Paper also discusses issues such as index pagination, data clustering, efficient migration of data, lower bounds on I/O complexity and Optimal design/requirements of queries.
+
+\textbf{Comments:}\\
+Paper covers multiple methods for temporal data to match different type of needs but some of the shortcomings were: No comparison among all the methods for same kind of data and ``Pathological'' cost evaluation for some mechanisms.  
+\end{document}

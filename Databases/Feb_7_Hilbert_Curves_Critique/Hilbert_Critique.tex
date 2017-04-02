@@ -1,0 +1,87 @@
+% DBMS homework
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Linear Clustering of Objects with Multiple Attributes \\	
+ 	\normalsize H V Jagadish
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 236}, Winter 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textbf{CS 202}}
+\fancyhead[RE,LO]{Payas Rajan}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{The problem:}\\
+The paper notes that multi-dimensional data are often converted to one-dimensional space but the existing methods does not support variety of queries in optimal way and take many disc blocks access to compute the queries.
+
+\textbf{The contribution:}\\
+The author propose ``Hilbert Curve'' a method of converting multi-dimensional data such as \emph{spatial data} to one-dimensional or linear space which can preserves the ``locality'' of neighboring points as much as possible, it can be achieved by following snake scan pattern but avoiding as many jump as possible.
+
+\textbf{The method:}\\
+There are multiple ways of converting multi-dimensional data to one-dimension. Author presented few of these methods and has compared them: 
+\begin{itemize}
+	\item Column Scan : scan single column at a time.
+	\item Column-wise Snake Scan : reverse direction of scan on alternate columns.
+	\item Z-curve : interleaving binary bits on different axises.
+	\item Gray-Code mapping : similar to z-curve but gray code to obtain 1-D coordinates. 
+	\item Hilbert Curve : an extension of Peano Curve.
+\end{itemize}
+
+Goodness of different space filling curves are measured by 2 types of queries: \textbf{Partial Exact Match Selection} which is selection done using exact values on some but not all attributes and \textbf{Range Queries} which is selection on ranges of some may be all attributes. Other criteria is cost measurement which is Number of Disk blocks fetched, Number of non-consecutive disk blocks fetched and Size of linear span for given selection. Author also proposes the extension of Hilbert curve from 2-D to 3-D and so on.
+
+For Patial match queries snake scan, Gray code and Hilbert curve perform best, z-curve performs significantly worse. For Range selection queries Author says that simple column scan can also yield best result along with Hilbert curve, Gray code and z-curve didn't performed good comparatively.
+
+Cost measurement of different mapping algorithm is also performed. Gray and Hilbert performs better in number of blocks fetched as block size is increased but column scan become worse as block size is increased. Gray and Hilbert also performed better in fetching few non-consecutive blocks but all perform same if block size gets very large. For number of hits per block Hilbert performs the best, Gray and z-curve were also respectively good.
+ 
+\textbf{Comments:}\\
+The paper presents space filling curve to map multi-dimensional data to one dimension while performing better or same in multiple aspects than other existing mapping algorithm. However, it also gives rise to a few problems:
+\begin{itemize}
+	\item With increase in the number of dimensions visualization of hilbert curve becomes less intuitive.
+	
+	\item With increase in dimension the space between neighboring points also grows so it becomes harder to maintain locality and loose less information using Hilbert curve i.e curse of dimensionality.
+\end{itemize}
+
+\end{document}

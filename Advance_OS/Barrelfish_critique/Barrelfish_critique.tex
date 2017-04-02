@@ -1,0 +1,42 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{epsfig}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Barrelfish: Critique} \hfill \textbf{Abhishek Srivastava} \\
+\normalsize CS202 Advanced Operating Systems\hfill Student Id: 861307778 \\
+Prof. Nael B. Abu-Ghazaleh \hfill Date: 02/06/2017 \\
+\hrule
+
+\noindent
+\\
+\large\textbf{Summary}\\
+The paper presents a new OS architecture called ``Multikernel'', which tries to provide better scalability and adaptability across multi-core heterogeneous hardware systems unlike monolithic OS.\\
+
+\noindent
+\large\textbf{Main Points}\\
+The paper claims that hardwares are growing at faster pace than software due to which many optimizations are done at hardware and software level to increase the performance of systems, is difficult to scale with increasing number of cores and portability becomes an issue as well. As the new diverse and improved hardwares are created we have to repeat these optimizations all over again for different kind of hardwares. To decouple this dependency between hardware and software this paper presents a distributed system like approach for OS. 
+
+\emph{Multikernel} is designed to treat system as a network of interconnected cores that communicate through message passing and does not share any memory across different cores.
+
+The multikernel model is built on three design principles:
+\begin{itemize}
+	\item Make inter-core communication explicit : Instead of sharing memory among cores all communications are done via message passing between multiple cores. It will provide better isolation, resource management on heterogeneous cores and provides modularity by using well defined interfaces. 
+	\item Make OS structure hardware-neutral: This will make OS scalable and future proof. It can be achieved by making  hardware interfaces and messaging transport mechanism, hardware independent. This will remove the need to do optimizations for specific hardwares.
+	\item View State as replicated: No memory is shared among cores and each core maintains their own replica of state. Consistency is maintained between these states. Since replicas are closer to the cores results in better performance and improves scalability by reducing interconnect loads, memory contention and synchronization overheads. 
+\end{itemize}
+
+Authors present a prototype called ``Barrelfish'' based on \emph{Multikernel} OS design and its evaluation against conventional OS designs. \emph{Barrelfish} although performing bad for lower core counts, it scales well and performs better as number of cores increases in variety of tests.\\
+ 
+\noindent
+\large\textbf{Limitations/Critique}\\
+The Drawbacks of Multikernel can be degrading performance of OS in homogeneous system with low core counts. Also not using Cache-coherence among different core can result in bad performance as well since current programs are optimized to take advantage of that.\\ 
+
+\noindent
+\large\textbf{Proposed Extension}\\
+Different message queuing optimizations can be done to improve the message sharing between cores. Cache coherence can be implemented if heterogeneous cores are involved. Different File system can be designed to take full advantage of distributed core system. 
+\end{document}

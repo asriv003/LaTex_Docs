@@ -1,0 +1,191 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{epsfig}
+\usepackage{listings}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Lab Report:1} \hfill \textbf{Abhishek Srivastava \& Ravdeep Pasricha} \\
+\normalsize CS202 Advanced Operating Systems\hfill Student Id: 861307778 \& 86130XXXX \\
+Prof. Nael B. Abu-Ghazaleh \hfill \today \\
+\hrule
+
+\noindent
+\\
+\large\textbf{Problem 1}\\
+Prob 1 description.\\
+
+\newpage
+
+\noindent
+\large\textbf{Problem 2}\\
+Lottery \& Stride Scheduler.\\
+ 
+\noindent
+\large\textbf{Solution:}\\
+Files Modified:
+\begin{itemize}
+	\item \textbf{defs.h}: Modified for adding system call  \emph{int sticket(int)}.
+	\item \textbf{proc.c}:  Added the definition of \emph{int sticket(int)} to assign the ticket value to the process , increase the count of total tickets, assign the stride value and total stride value for a process, and also modified the round robin scheduler by adding Lottery Scheduler and Stride Scheduler. 
+	\item \textbf{proc.h}: Modified \emph{proc} data structure to add 4 more parameters \emph{int tcount,	int numticks, int stride,	int tstride} for lottery and stride scheduler implementation.
+	\item \textbf{syscall.h}, \textbf{syscall.c}, \textbf{sysproc.c}, \textbf{usys.S}, \textbf{user.h}: Modified to add System cal to set ticket, stride value for process.
+	\item \textbf{Makefile}:  Added test files \emph{prog1.c, prog2.c, prog3.c, lprog1.c, lprog2.c and lprog3.c}.\\
+\end{itemize}
+Code Added:
+
+\begin{lstlisting}
+//System call to set values for the process.
+int sticket(int tnum)
+{
+    //Set the number of tickets to value passed
+    proc->tcount = tnum;
+    //counter for total number of tickets
+    totticket += tnum;
+    //calculate the stride value for process
+    proc->stride = totstride/tnum;
+    proc->tstride = totstride/tnum;
+    //For debug purposes
+    //cprintf(``ticket value set to : %d\n'', proc->tcount);
+    //cprintf(``stride value set to : %d\n'', proc->stride);
+}
+
+/*------------------------------------------------------------------*/
+
+// Per-process state
+struct proc {
+    uint sz;                 // Size of process memory (bytes)
+    pde_t* pgdir;            // Page table
+    char *kstack;            // Bottom of kernel stack for this process
+    enum procstate state;    // Process state
+    int pid;                 // Process ID
+    struct proc *parent;     // Parent process
+    struct trapframe *tf;    // Trap frame for current syscall
+    struct context *context; // swtch() here to run process
+    void *chan;              // If non-zero, sleeping on chan
+    int killed;              // If non-zero, have been killed
+    struct file *ofile[NOFILE];  // Open files
+    struct inode *cwd;       // Current directory
+    char name[16];           // Process name (debugging)
+    int tcount;              // CS202 : Ticket Count
+    int numticks;            // CS202 : Number of times it is scheduled
+    int stride;              // CS202 : Stride value
+    int tstride;             // CS202 : Total stride value
+};
+
+/*------------------------------------------------------------------*/
+
+//Stride Scheduler Implementation
+void stride_scheduler(void)
+{
+    struct proc *p;
+
+    for(;;){
+        // Enable interrupts on this processor.
+        sti();
+
+        //Min stride value holder, highest initial value
+        int min_stride = totstride;
+        //To store the pid of process with minimum stride value
+        int stride_pid = 0;
+
+        // Loop over process table looking for process to run.
+        acquire(&ptable.lock);
+
+        //Loop over all the process to find out process with
+        //minimum stride value
+        for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+        if(p->state != RUNNABLE)
+            continue;
+
+        //Check if process has the less stride value
+        if(p->tstride < min_stride)
+        {
+            min_stride = p->tstride;
+            //store pid value
+            stride_pid = p->pid;
+        }
+    }
+    //Choose the process with pid of minimum stride value
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+        if(p->state != RUNNABLE)
+            continue;
+
+        //check if process has the pid off minimum stride value
+        if(p->pid != stride_pid)
+            continue;
+
+        // Switch to chosen process.  It is the process's job
+        // to release ptable.lock and then reacquire it
+        // before jumping back to us.
+
+        //Increase the count of scheduled number
+        p->numticks +=1;
+        //Increasing the total stride value
+        p->tstride += p->stride; 
+        proc = p;
+        switchuvm(p);
+        p->state = RUNNING;
+        swtch(&cpu->stride_scheduler, p->context);
+        switchkvm();
+
+        //Process is done running for now.
+        //It should have changed its p->state before coming back.
+        proc = 0;
+        }
+        release(&ptable.lock);
+    }
+}
+
+/*------------------------------------------------------------------*/
+
+//Lottery Scheduler Implementation
+void lottery_scheduler(void)
+{
+    struct proc *p;
+
+    for(;;){
+        // Enable interrupts on this processor.
+        sti();
+
+        //generate random ticket
+        int winner = rand()%(totticket+1)
+        //To hold total number of tickets traverssed
+        int ticketsum = 0;
+
+        // Loop over process table looking for process to run.
+        acquire(&ptable.lock);
+        for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+            if(p->state != RUNNABLE)
+                continue;
+
+            //condition to choose the process which are runnable
+            ticketsum += p->tcount;
+            if(ticketsum < winner)
+                continue;
+
+            // Switch to chosen process.  It is the process's job
+            // to release ptable.lock and then reacquire it
+            // before jumping back to us.
+
+            //Increase the count of scheduled number
+            p->numticks +=1;
+            proc = p;
+            switchuvm(p);
+            p->state = RUNNING;
+            swtch(&cpu->lottery_scheduler, p->context);
+            switchkvm();
+
+            // Process is done running for now.
+            // It should have changed its p->state before coming back.
+            proc = 0;
+        }
+        release(&ptable.lock);
+    }
+}
+
+/*------------------------------------------------------------------*/
+\end{lstlisting}
+\end{document}

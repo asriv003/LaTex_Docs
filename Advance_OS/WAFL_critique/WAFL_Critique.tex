@@ -1,0 +1,46 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{epsfig}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{WAFL: Critique} \hfill \textbf{Abhishek Srivastava} \\
+\normalsize CS202 Advanced Operating Systems\hfill Student Id: 861307778 \\
+Prof. Nael B. Abu-Ghazaleh \hfill \today \\
+\hrule
+
+\noindent
+\\
+\large\textbf{Summary}\\
+The paper presents a new improved Network File System called Write Anywhere File Layout(WAFL), whose primary purposes are to provide fast network file services, support large file systems which can grow smoothly, high performance RAID and ability to restart quickly after a crash.\\
+
+\noindent
+\large\textbf{Main Points}\\
+The paper claims that existing network file systems were slow and cannot support very large and growing file system and pretty unreliable and takes very time to recover as well. The authors present a file system which overcomes this issue.
+
+Since the network file systems have to access data multiple time WAFL tries to maintain multiple copies of the data using \textbf{snapshots}. These are read-only copies of entire file system. It gets created and deleted automatically. Duplication of snapshots was avoided using copy-on write technique. Also it was used to recover system fast in case of bad shutdown.\\
+
+WAFL file system has:
+\begin{itemize}
+	\item Root Inode: Root of everything. 
+	\item Inode File: Contains all the inodes to represent files.
+	\item Block Map File: Indicates free memory blocks.
+	\item Inode Map File: Indicates free inodes in the memory.
+\end{itemize}
+Except Root Inode, all other values are stored in a file as meta data which helped WAFL to store them anywhere, operate RAID efficiently and made easier to increase the file system size dynamically. Root inode helps to create copies of snapshots efficiently with very small disk I/O.
+
+WAFL provides file consistency using consistency point a different version of snapshot. It is created on regular interval and it stores the whole file system information, while reverting back it uses latest consistency point which helps in fast recovery.
+
+In between creating consistency points data is written to the disc and also multiple NFS requests are processes as well, thats why WAFL uses Non-Volatile RAM to log of processed NFS requests from last consistency point. To achieve maximum write flexibility author proposes multiple policies.\\
+  
+\noindent
+\large\textbf{Limitations/Critique}\\
+The Drawbacks of WAFL can be if multiple requests are done for the same file, multiple snapshots will be created and if these datas are modified maintaining a consistent can be a very big problem especially if that file has a lot of indirect blocks usage.\\ 
+
+\noindent
+\large\textbf{Proposed Extension}\\
+Different mechanisms can be provided to handle the cases where Non-volatile RAM gets corrupted and large chunk of NFS requests get lost. Also Efficient storage and re-usability of snapshots can be done.
+\end{document}

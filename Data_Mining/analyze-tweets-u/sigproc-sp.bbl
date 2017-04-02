@@ -1,0 +1,83 @@
+\begin{thebibliography}{1}
+
+\bibitem{jenny:wihsmthos}
+J.~Ta
+\newblock {\em What Impact Has Social Media Truly Had On Society}.
+\newblock Business2Community, August 2014.
+
+\bibitem{aaSides:dpdrm}
+J.Sides
+\newblock {\em Do Presidential Debates Really Matter?}.
+\newblock Washington Monthly, October 2012.
+
+\bibitem{wang:asfrttsa}
+H.~Wang, D.~Can, A.~Kazemzadeh, F.~Bar and 	S.~Narayanan
+\newblock {\em A system for real-time Twitter sentiment analysis of 2012 U.S. presidential election cycle}.
+\newblock ACL, July 2012.
+
+\bibitem{shamma:ttducaous}
+D.~Shamma, L.~Kennedy and E.~Churchill
+\newblock {\em Tweet the debates: understanding community annotation of uncollected sources}.
+\newblock WSM,October 2009.
+
+\bibitem{aAgarwal:saotd}
+A.~Agarwal, B.~Xie, I.~Vovsha, O.~Rambow, and R.~Passonneau.
+\newblock {\em Sentiment analysis of Twitter data}.
+\newblock LSM, June 2011.
+
+\bibitem{bTumasjan:pewt}
+A.~Tumasjan, T.~O. Sprenger, P.~G. Sandner, and I.~M. Welpe.
+\newblock {\em Predicting Elections with Twitter: What 140 Characters Reveal
+  about Political Sentiment}.
+\newblock AAAI, May 2010.
+
+
+\bibitem{cJoachims:tcwsvm}
+T.~Joachims.
+\newblock {\em Text Categorization with Support Vector Machines: Learning with
+  Many Relevant Features}.
+\newblock Springer Berlin/Heidelberg, 1998.
+
+\bibitem{dPak:tacfsaaom}
+A.~Pak and P.~Paroubek.
+\newblock {\em Twitter as a Corpus for Sentiment Analysis and Opinion Mining}.
+\newblock DBLP, May 2010.
+
+\bibitem{bplanet:tfvta}
+BrightPlanet
+\newblock {\em https://brightplanet.com/2013/06/twitter-firehose-vs-twitter-api-whats-the-difference-and-why-should-you-care/}.
+
+\bibitem{nltk:nltkdoc}
+NLTK
+\newblock {\em http://www.nltk.org/}.
+
+\bibitem{pang:spdmrd}
+B.~Pang and L.~Lee
+\newblock {\em Movie Review Database}.
+\newblock https://www.cs.cornell.edu/people/pabo/movie-review-data/.
+
+\bibitem{metabase:mbdb}
+Metabase
+\newblock {\em https://metabase.com/}.
+
+\bibitem{plotly:graphplot}
+Plotly
+\newblock {\em https://plot.ly}.
+
+\bibitem{ppdn:pythonprog}
+Python Programming
+\newblock {\em https://pythonprogramming.net/}.
+
+\bibitem{sklearn:skikit}
+SkiKit Learn
+\newblock {\em http://scikit-learn.org/}.
+
+\bibitem{tapi:twitterapi}
+Twitter API
+\newblock {\em https://dev.twitter.com/streaming/overview}.
+
+\bibitem{wiki:wikipedia}
+Twitter Wikipedia
+\newblock {\em https://en.wikipedia.org/wiki/Twitter}.
+
+\end{thebibliography}

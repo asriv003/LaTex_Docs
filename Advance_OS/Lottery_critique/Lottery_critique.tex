@@ -1,0 +1,47 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{epsfig}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Lottery Scheduling: Critique} \hfill \textbf{Abhishek Srivastava} \\
+\normalsize CS202 Advanced Operating Systems\hfill Student Id: 861307778 \\
+Prof. Nael B. Abu-Ghazaleh \hfill Date: 01/23/2016 \\
+\hrule
+
+\noindent
+\\
+\large\textbf{Summary}\\
+The paper presents a randomized resource scheduling mechanism which provides finer control based on the relative execution rate of processes instead of their turnaround time.\\
+
+\noindent
+\large\textbf{Main Points}\\
+The paper tells that conventional scheduling algorithms do not regulate consumption of resources shared between users and applications, therefore cannot provide a fine grained control over relative execution rate for different types of applications.
+
+Lottery scheduling provides a randomized mechanism which provides control over relative execution rates of different processes using \textbf{lottery tickets}. It can also be generalized to manage diverse resources like I/O bandwidth, memory and access to lock.
+
+Lottery tickets are used to represent the share of resource that a process should receive. Each process which is contending for resource is handed a set of tickets by the kernel. At regular interval of time lottery is held to determine which process should get to run next. Resource is granted to the the winner ticket. This is determined randomly so it is probabilistically fair. 
+
+Greater the number of tickets a process holds, higher are the chances of acquiring resource. Any client with non-zero tickets will eventually get the resource so starvation is not possible in this scheduling.
+\\
+Techniques used to implement management policies using lottery are:
+\begin{itemize}
+	\item Ticket Currencies: A unique currency can be used to denote its local resources within a module. It is used to provide modular resource management. 
+	\item Ticket Transfers: A process can transfer its tickets to the dependent process. It solves conventional problem of priority inversion.
+	\item Ticket Inflation: A process can create more tickets to get more chances of getting resources. This was allowed among trusted clients.
+	\item Ticket Compensation: If a process is not consuming its allocated time it was granted compensation ticket to ensure resource consumption is equal.
+\end{itemize}
+
+The papers claims that Lottery Scheduling is light weight, provides fairness, flexible control and isolation among different processes with various execution time. Paper shows that overhead by lottery scheduling is comparable to conventional policy in worst conditions.\\
+
+\noindent
+\large\textbf{Limitations/Critique}\\
+The main drawbacks of Lottery scheduling can be not able to provide fairness in executing high relative ratio processes over short term because its a takes large time to converge to true ratio. Another drawback can be ticket inflation property which can be misused by malicious application to clog the system.\\ 
+
+\noindent
+\large\textbf{Proposed Extension}\\
+Lottery Scheduling can be extended to make it deterministically fair as well. Also improvements can be done to make convergence time of high relative execution ratio shorter.
+\end{document}

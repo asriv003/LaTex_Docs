@@ -1,0 +1,76 @@
+% DBMS homework template
+\documentclass[a4paper,11pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Executing SQL over Encrypted Data in the Database-Service-Provider Model\\	
+ 	\normalsize Hakan Hacigumus, Bala Iyer, Chen Li and Sharad Mehrotra
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 236}, Winter 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+\textbf{The problem:}\\
+The paper discusses a ``Database as a Service" model where applications or users can store their data and perform any operations on them through Internet. But two kind of Data Security problem arises for the data stored, protection from outsiders and protection from service provider. Paper mostly focuses on the second issue.   
+
+\textbf{The contribution:}\\
+The authors proposes an architecture where \emph{client} sends queries, also stored some metadata of the database and \emph{server} stores data in encrypted format. There are multiple ways of handling the execution of queries. Server maintains additional information about encrypted database to provide execution of queries on the server side. Queries sent are encrypted using algebraic framework.
+
+\textbf{The method:}\\
+The Authors presents mechanism to encrypt the data and store them at server side. These mechanism includes: \emph{Partition Functions} which partitions the domain of attribute values in some specific way, \emph{Identification Functions} which assigns an attribute value to some partition value from previous step, \emph{Mapping Functions} maps a value in domain of attribute to identifier partition to which the value belongs either preserving ordering or randomly, \emph{Storing Encrypted Data} provides way of storing the tuple, additional column \emph{etuple} is added whose value is encryption of all the attributes values and \emph{Decryption Functions} which tries to decrypt the data stored which can be applied to obtain original values.
+ 
+Authors proposes mapping conditions which defines ways to translate a specific client-side query to encrypted server-side query. Different grammar rules on query conditions were:
+
+\begin{itemize}
+	\item Attribute operation Value
+	\item Attribute1 operation Attribute2 
+	\item (Condition1 $\vee$ Condition2) OR (Condition1 $\wedge$ Condition2) OR ($\neg$ Condition) 
+\end{itemize}
+Here operations which are allowed in the queries are $<$,$>$,$=$,$\leq$ and $\geq$. These operations are handled in their own way by appropriately mapping between the unencrypted data and encrypted data.
+
+Author proposes to divide the operator computation between client and server. At server superset of values will be generated using some operations and upon those superset values operations will be performed at client-side to give the result of the operator. Author discusses following operators and way to divide their computations: \emph{Selection}, \emph{Join}, \emph{Grouping \& Aggregation}, \emph{Sorting}, \emph{Duplicate-Elimination}, \emph{Set-Difference}, \emph{Union} and \emph{Projection} Operators. Author suggested to use pull some heuristics strategy to minimize the computation cost at client end. 
+
+\textbf{Comments:}\\
+The paper proposes a novel method to do encrypted query on sotred encrypted data on server. Different experiments are performed to evaluated query execution of different kind of queries with different operations. 
+
+However, Some drawbacks of the proposed methods were:
+\begin{itemize}
+	\item Encrypting large amount of tuples with large number of attributes can be a costly operations. 	
+	\item Pipelining mechanism is not supported using this model because final results are being calculated at client-end.
+\end{itemize}
+
+\end{document}

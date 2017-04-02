@@ -1,0 +1,76 @@
+% DBMS homework template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Combining Fuzzy Information: an Overview\\	
+ 	\normalsize Roanld Fagin
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 236}, Winter 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+\textbf{The problem:}\\
+The paper states that accessing data in a sorted manner based on fuzzy information is also necessary for certain applications such as multimedia data and we want to choose top-k elements based on their fuzzy value of attributes in database systems. Previously stated algorithms were not optimal for these applications.  
+
+\textbf{The contribution:}\\
+The authors defines fuzzing property of a data as a value of an attribute between 0 and 1 instead of \emph{True} or \emph{Not True}. Author presents a \emph{\textbf{Threshold}} Algorithm, which is an improved version of Fagin's Algorithm. Fagin Algorithm was probabilistically optimal but under certain cases it did not performed well.
+
+\textbf{The method:}\\
+The Authors presents Threshold algorithm which was improvement over Naive and Fagin's algorithm. Naive algorithm idea was to calculate the grade of each data using an aggregate function and then get the  top-k elements. 
+
+Fagin's algorithm was based on to do sorting access in parallel at all the lists, randomly select lists to get k objects appear in all the lists, calculate the grade or score of the objects and compute top-k objects.
+ 
+Authors stated following steps in the Threshold algorithm: 
+\begin{itemize}
+	\item Do sorting access in the parallel at all the lists which includes for each object R that has been seen at least once in any of the list.
+	\item Do random access to get the attribute value of R from the list where objects has not been seen yet. 
+	\item Compute the grade of selected object and repeat until threshold value is less than the grade value. 
+	\item If threshold is less than lowest aggregated grade of top-k set of objects then halt.
+\end{itemize}
+Threshold Algo is more optimal than Fagin's Algo but there are conditions where data can not be able to access in sorted manner or random manner. For those \emph{Restricting Sorted Access} and \emph{Restricting Random Access} algorithms are presented.
+
+\textbf{Comments:}\\
+The paper improves upon existing methods to find top-k elements based on their fuzzy properties over multiple attributes. Threshold Algorithm performs in general better if there is not certain restrictions in access patterns.  
+
+However, Some of drawbacks of the presented algorithms were:
+\begin{itemize}
+	\item If the number of attributes and number of objects are very high in the, sorting cost can also become prevalent. 	
+	\item It does not handle the case when all the stored data can be same which can be the worst case scenario where it may have to access all the stored objects.
+\end{itemize}
+
+\end{document}

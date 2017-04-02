@@ -1,0 +1,42 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{epsfig}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{COPS: Critique} \hfill \textbf{Abhishek Srivastava} \\
+\normalsize CS202 Advanced Operating Systems\hfill Student Id: 861307778 \\
+\hfill \today \\
+\hrule
+
+\noindent
+\\
+\large\textbf{Summary}
+
+The paper presents issue with existing distributed data stores who sacrifice strong consistency to provide low latency operations by using ``eventual'' consistency in place of ``causal'' consistency model.
+
+\noindent
+\large\textbf{Main Points}
+
+Authors proposes scalable \emph{causal consistency model with convergent conflict handling} which they call \emph{causal+ consistency} for wide area storage with COPS \& COPS-GT. Causal Component ensures consistency of data stored between different operations. Convergent conflict handling takes care of replicas so that they do not diverge from original and conflict while updating data with same key are dealt at all places identically.
+
+For current distributed data storages Authors also proposes few properties (\textbf{ALPS}): \textbf{Availability}: All operations must be completed with no blocking or error returned,  \textbf{Low Latency}: Operations issued by client must be performed ``quickly'', \textbf{Partition tolerance}: Data store continues to operate even with different network partitions and \textbf{High Scalability}: Adding resources increase performance and storage capacity, along with \textbf{Strong Consistency}: Distributed systems should provide a single consistent data.
+
+COPS \& COPS-GT system provide ALPS properties with causal+ consistency. They has two main components: \emph{Key-Value store} and \emph{Client library}.
+\begin{itemize}
+	\item Key-Value store is similar to traditional tuple store but differ by storing versions of written values and their dependencies and provides linearizable operations on keys. They provide interfaces: \emph{get\_by\_version}, \emph{put\_after} and \emph{dep\_check}. COPS clusters maintain their local key-store copy but scale it using consistent hashing and perform chain replication for fault tolerance in asynchronous manner to other nodes. 
+	\item Client Library consist on four API's: \emph{createContext}, \emph{deleteContext}, \emph{put}, \emph{get} or \emph{get\_trans}. They also differ with traditional interface by using context id as argument for each get and put client operations to track their causal dependencies. get\_trans operation provides consistent view of multiple specified key-value pairs. Garbage collection is used to reduce the state requirements to store all the dependencies by removing those dependencies which are committed to all the replicas. To reduce the number of dependency checks while replications client library maintains list of nearest dependencies and use it for its optimization. 
+\end{itemize}
+The evaluation done by the Authors shows that COPS and COPS-GT provide a low-latency, high throughput and scalable distributed data storage system.
+
+\noindent
+\large\textbf{Limitations/Critique}\\
+The Drawbacks of COPS and COPS-GT can be that they are less efficient for the write-heavy workload environments. They are also not robust enough for datacenter failures handling and long network partitions.  
+
+\noindent
+\large\textbf{Proposed Extension}\\
+COPS and COPS-GT can be extended to large scale data which are very dependent and have large dependencies. For those systems replication will take much more time. Also better methods for dependency checking for a key-value can be designed which can increase the efficiency especially for COPS-GT get\_trans method. 
+\end{document}
