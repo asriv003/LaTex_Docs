@@ -1,0 +1,310 @@
+% homework template
+\documentclass[a4paper,11pt]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+	
+	\Large
+ 	\textbf{CS 218, Spring 2017}
+ 	\hfill
+ 	Homework 2
+ 	\par
+ 	
+	\Large
+	Abhishek Kumar SRIVASTAVA
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\par
+ 	
+ 	%plagiarism statement
+ 	\begin{center}
+
+ 	\vspace{.2in}
+ 	
+ 	\textit{I certify that this submission represents my own original work }
+ 	\par
+	\vspace{.2in}
+	\makebox[3.0in]{\hrulefill}
+	\par
+
+ 	\end{center}
+ 	
+ 	\hrulefill
+ 	\par \vspace{2ex}
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textbf{CS 218:} Homework 1}
+\fancyhead[RE,LO]{Abhishek Kumar Srivastava}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+%some custom commands, taken from stanford template
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\begin{solution}1	
+	Given that 
+	\begin{align*}
+	T(n)&=\begin{cases}
+	2 & \text{$n = 2$}\\
+	4 \cdot T({n}^{1/2}) + {\log}^2(n) & \text{$n > 2$} \\
+	\end{cases}\\
+	\text{Consider when $n > 2$}\\
+	T(n)&= 4 \cdot T({n}^{1/2}) + {\log}^2(n) \\
+	\end{align*}
+	Master theorem cannot be applied on this equation. We need to apply transformation to convert into Master theorem equation.
+	
+	We can substitute $n = 2^m$ in the equation.
+	\begin{align*}
+	T(2^m)&= 4 \cdot T(2^{m/2}) + \log^2(2^m) \\
+	&=  4 \cdot T(2^{m/2}) + m^2 \\
+	\end{align*}
+	Substituting again in this equation by $T(2^m) = S(m)$. We get,
+	\begin{align*}
+	S(m) = 4 \cdot S(m/2) + m^2
+	\end{align*}
+	Now we can apply Master theorem on the above equation.\\
+
+	\textbf{Case 1:} $f(n)$ $\epsilon$ $O(n^{\log_b{a} - \varepsilon})$ where $\varepsilon > 0$.\\
+	
+	$m^2$ $\epsilon$ $O(m^{\log_2{4} - \varepsilon})$ = $O(m^{2 - \varepsilon})$\\
+	
+	For any $\varepsilon > 0$ this is not possible. So case 1 fails.\\
+	
+	\textbf{Case 2:} $f(n)$ $\epsilon$ $\Theta(n^{\log_b{a}}\cdot \log^k n)$ where $k \ge 0$.\\
+	
+	$m^2$ $\epsilon$ $\Theta(m^{\log_2{4}}\cdot \log^k m)$ = $\Theta(m^{2}\cdot \log^k m)$\\
+	
+	$k = 0$ satisfy the equation. So case 2 holds. Thats why,
+	
+	\begin{align*}
+	S(m) &= \Theta(m^{\log_2{4}}\cdot \log^{k+1}m)\\
+	&= \Theta(m^{2}\cdot \log{m})
+	\end{align*}
+	By substituting back $m = \log{n}$ we get,
+	\begin{align*}
+	T(n) = \Theta(\log^2{n}\cdot \log{\log{n}}).
+	\end{align*}
+\end{solution}
+
+\newpage
+\begin{solution}2
+	Since the wall is stretched infinitely in the both direction i have assumed the starting location as 0. From the starting point we will go $2^{i}$ steps first in the right side, come back to starting location and then we will go $2^{i}$ steps in the left side and return back to starting location and increase the value of $i$ by 1 where $i = 0,1...m$ which is nothing but doubling the steps to be taken in the next iteration for either side, we will continue until the door is found. One more assumption i am taking is while going from starting location to the $2^{i}th$ location we will check for the doors at each location but skipping the locations which are already checked that is doors between $0$ to $2^{i-1}$. Psuedo Code to solve this problem is given on page 3.\\
+	
+	\textbf{Part 1.}\\
+	
+	The worst case will be when the door is on the left side and let us assume its value $n = 2^{m}+d$, where $ 1 \leq d \leq 2^{m}$ 
+	Since we are traversing in both direction the total cost would be:
+	\begin{equation*}
+	T(n) = 2 \cdot (2\cdot( 1+2+4...2^{m})) + 2\cdot 2^{m+1} + 2^{m}+d
+	\end{equation*}
+	Inner bracket cost is because we are going to $2^{i}th$ location and coming back and it is multiplied by 2 because we are doing it for both directions i.e Right and Left. $2\cdot 2^{m+1}$ because we are going till $2^{m+1}$ times in the right direction and then coming back to the starting location. $2^{m}+d$ is added because we are going till $2^{m}$ location in the left direction and next $d$ steps to find the door location. Therefore, 
+	\begin{equation*}
+	T(n) = 4 \cdot ( 1+2+4...2^{m}) + 2\cdot 2^{m+1} + 2^{m}+d
+	\end{equation*}
+	Which is equivalent to the following equation.
+	\begin{equation*}
+	T(n) = 4 \cdot (2^{m+1} - 1) + 4\cdot 2^{m} + 2^{m}+d
+	\end{equation*}
+	After simplifying in $2^{m}$ terms.
+	\begin{equation*}
+	T(n) = 8 \cdot 2^{m} - 4 + 4\cdot 2^{m} + 2^{m}+d
+	\end{equation*}
+	\begin{equation*}
+	T(n) = 13 \cdot 2^{m} + d -4
+	\end{equation*}
+	And since $n = 2^{m} + d$,$ 2^{m} = n-d$. By replacing it we can get.
+	\begin{equation*}
+	T(n) = 13 \cdot (n-d) + d - 4
+	\end{equation*}
+	\begin{equation*}
+	T(n) = 13 \cdot n - 12\cdot d - 4
+	\end{equation*}
+	\begin{equation*}
+	T(n) \leq 13 \cdot n
+	\end{equation*}
+	$\therefore T(n) = O(n)$\\
+	
+	\textbf{Part 2.}\\
+	
+	Since we already got $T(n)$ expression from the Part 1 which is 
+		\begin{equation*}
+		T(n) = 13 \cdot n - 12\cdot d - 4
+		\end{equation*}
+	The worst case will be when $d = 1$.Which will the equation as,
+	\begin{equation*}
+	T(n) = 13 \cdot n - 16
+	\end{equation*}
+	 We can see the the equation that coefficient of $n$ is 13. which is the constant multiple in the worst case.
+	\begin{algorithm}
+		\begin{algorithmic}[h]
+			\Procedure{FIND\_DOOR\_LOCATION}{$A$}
+			
+			\If {door at $A[0] = true$} \Comment{Base case}
+			\State $door\_location \gets 0$
+			\State return $door\_location$
+			\EndIf
+			
+			\State $pos \gets 0$ \Comment{starting position}
+			\State $is\_door\_found \gets false$ \Comment{True if door found}
+			\State $door\_location \gets 0$
+			\State $steps\_to\_take \gets 1$ \Comment{How much step to take}
+			
+			\While {$is\_door\_found \neq true$} 
+			\State Traverse in $Right$ Direction
+			\While{$pos \leq steps\_to\_take/2$} \Comment{Skipping previously checked doors} 
+			\State $pos++ $ 
+			\EndWhile
+			
+			\While{$pos \leq steps\_to\_take$} \Comment{Check $Right$ Direction}
+			\State $pos++$
+			
+			\If {door at $A[pos] = true$} \Comment{Check Each location}
+			\State $door\_location \gets pos$
+			\State $is\_door\_found \gets true$
+			\State break
+			\EndIf
+			 
+			\EndWhile
+			
+			\If {$is\_door\_found \neq true$} \Comment{If door not found in $Right$ Side}
+			\While{$pos \neq 0$} \Comment{Traversing back to starting position} 
+			\State $pos-- $ 
+			\EndWhile
+			
+			\State Traverse $Left$ Direction
+			
+			\While{$pos \leq steps\_to\_take/2$} \Comment{Skipping previously checked doors} 
+			\State $pos++ $ 
+			\EndWhile
+			\While{$pos \leq steps\_to\_take$} \Comment{Check $Left$ Direction}
+			\State $pos++$
+			
+			\If {door at $A[pos] = true$} \Comment{Check Each location}
+			\State $door\_location \gets pos$
+			\State $is\_door\_found \gets true$
+			\State break
+			\EndIf
+			
+			\EndWhile
+			\EndIf
+			\If {$is\_door\_found \neq true$} \Comment{If door also not found $Left$ Side}
+			\While{$pos \neq 0$} \Comment{Traversing back to starting position} 
+			\State $pos-- $ 
+			\EndWhile
+			
+			\State $steps\_to\_take \gets 2*steps\_to\_take$ \Comment{Increasing steps to be taken by 2}
+			\EndIf
+			\EndWhile
+			\State return $door\_location$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+
+\end{solution} 
+
+\newpage
+\begin{solution}1
+	\begin{enumerate}
+		\item Iterative substitutions \\
+		Given that 
+		\begin{align*}
+		T(n)&=\begin{cases}
+		1 & \text{$n = 1$}\\
+		4 \cdot T(\frac{n}{2}) + 3 & \text{$n > 1$} \\
+		\end{cases}\\
+		&= 4 \cdot (4 \cdot T(\frac{n}{4})+ 3) + 3 \\
+		&= 16 \cdot T(\frac{n}{4}) + 4 \cdot 3 + 3 \\
+		&= 16 \cdot (4 \cdot T(\frac{n}{8})+ 3) + 4 \cdot 3 + 3 \\
+		&= 64 \cdot T(\frac{n}{8}) + 16 \cdot 3 + 4 \cdot 3 + 3 \\
+		\cdot \\
+		\cdot \\
+		\cdot \\
+		&= 4^{i}.T(\frac{n}{2^{i}}) + 4^{i-1} \cdot 3 + 4^{i-2} \cdot 3 + ...+ 4^{0} \cdot 3 \\
+		&= 4^{i}\cdot T(\frac{n}{2^{i}}) + 3\cdot(4^{i-1} + 4^{i-2} + ...+ 4^{0}) \\
+		\text{Geometric series for ratio r $=$ 4} \\
+		&= 4^{i}\cdot T(\frac{n}{2^{i}}) + 3\cdot(\frac{4^{i} - 1}{4-1} )\\
+		&= 4^{i}\cdot T(\frac{n}{2^{i}}) + {4^{i} - 1}\\
+		\text {$i = \log_2(n)$ will give us the base case},\\
+		&= 4^{\log_2(n)}\cdot T(1) + 4^{\log_2(n)} -1 && \text{(since $i = \log_2(n)$)}\\
+		&= 2 \cdot 4^{\log_2(n)} -1\\
+		&= 2\cdot 2^{\log_2(n^{2})} -1 && \text{(log manipulation)}\\
+		\therefore	T(n)&= 2 \cdot n^{2} - 1 \\	
+		\end{align*}
+		
+		\item
+		\textbf{Proof by induction}\\
+		Given that 
+		\begin{align*}
+		T(n)&=\begin{cases}
+		1 & \text{$n = 1$}\\
+		4 \cdot T(\frac{n}{2}) + 3 & \text{$n > 1$} \\
+		\end{cases}
+		\end{align*}
+		
+		\text{\textit{From Iterative Substitution:}} $T(n) = 2 \cdot n^{2} - 1$\\
+		
+		\textbf{Proof:} Base case: $n = 2$\\
+		Calculate using given recurrence relation.
+		\begin{align*}
+		& T(2) = 4 \cdot T(\frac{2}{2}) + 3\\
+		& T(2) = 4 \cdot 1 + 3 = 7 && \text{Since, T(1) = 1}
+		\end{align*}
+		Calculate using derived asymptotic solution.
+		\begin{align*}
+		& T(2) = 2 \cdot n^{2} -1\\
+		& T(2) = 2 \cdot 2^{2} - 1 = 7	&& \text{Since, n = 2}	
+		\end{align*}
+		Since both result are the same hence derived solution holds.		\newpage
+		Induction hypothesis: T($\frac{n}{2}$) = $2 \cdot {(\frac{n}{2})}^{2}$ - 1 = $\frac{n^{2}}{2} - 1$
+		
+		Induction step: 
+		\begin{align*}
+		T(n) &= 4 \cdot T(\frac{n}{2})+ 3 \\
+		&= 4 \cdot (\frac{n^{2}}{2} - 1) + 3 && \text{(Substituting hypothesis)}\\
+		&= 4 \cdot (\frac{n^{2}}{2})- 4 + 3\\
+		&= 2 \cdot n^{2} - 1 \\
+		\text{Which is same as our hypothesis.} \\
+		\therefore T(n) = 2 \cdot n^{2} -1.
+		\end{align*}
+	\end{enumerate}
+	
+\end{solution}
+
+\end{document}

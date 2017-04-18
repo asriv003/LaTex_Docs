@@ -1,0 +1,72 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	A Case for End System Multicast\\	
+ 	\normalsize Yang-hua Chu, Sanjay G. Rao, Srinivasan Seshan and Hui Zhang
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+This paper discusses three major problem with the multicast which are scalability because routers have to maintain group states, increased complexity because it tries to provide reliability, congestion control and other high level features which were not the job to be handled by IP layer and need of internet infrastructure to be changed. \\
+
+
+Authors proposes that Multicasting should be implemented at the end systems not on the network layer and to support that proposal they designed ``Narada'' protocol as an example. Authors suggests using participating end systems to create an overlay structure and then use it to route the multicast packets. Creating overlay is a 2 step process and it evolves with more network information becomes available with time. After creating overlays tress are created for multicast to use it to distributing data. A set of algorithms are also presented on how to maintain created overlay structures so it can become more self-organising. \\ 
+
+
+\textbf{Comments:}
+\begin{itemize}
+	\item End system multicast is slightly inefficient than IP multicast.
+	\item Time to construct overlays and maintain them becomes very high of group size will become very large.
+	\item Increase in the latency in end to end communication because it requires other end systems help for constructing path.
+\end{itemize}
+
+\end{document}

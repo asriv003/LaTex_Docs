@@ -1,0 +1,72 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Stable Internet Routing Without Global Coordination.\\	
+ 	\normalsize Lixin Gao and Jennifer Rexford
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+This paper tries to solve the problem route divergence problem occur between Autonomous Systems by providing a set of guidelines which guarantees route convergence, provides flexibility and have a great practical value since it does not require ASes to change their complex local policies and does not require global coordination among other ASes.
+
+
+Since internet is collection of thousands of ASes such as ISPs, Companies and Universities and they are interconnected using BGP. Route divergence problem occurs in BGP due to conflicting policies which can degrades end to end performance. The fundamental idea to solve route divergence problems is by using Internet Routing Registry which require routing policies to be registered and routes consistency is checked. It suffers problem such as not willingness to share routing information, consistency checking can be NP complete problem, it is unable to handle failure cases and require global coordination among ASes. 
+
+The paper provides guidelines to solve these issues for ASes to follow which provided guaranteed convergence. This guideline disallow certain policies for ASes, it is independent on underlying network topology and guidelines makes use of internet hierarchical structure and commercial relation between ASes and does not require them to share their complete routing policies instead share their relationship information of their neighbors. Group of ASes are in considered in stable condition when no AS would change its routes and Safe BGP system guarantees that group of ASes will reach stable state. This paper uses BGP routing and Distributed path selection for importing and updating policies of itself, exporting policies to all of its neighbors and BGP route selection.   \\ 
+
+
+\textbf{Comments:}
+\begin{itemize}
+	\item Alternate dynamic methods can be possible to detect and resolve route conflicts when necessary.
+\end{itemize}
+
+\end{document}

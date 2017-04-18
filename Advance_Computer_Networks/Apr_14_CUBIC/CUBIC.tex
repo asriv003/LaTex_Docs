@@ -1,0 +1,91 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	CUBIC: A New TCP-Friendly High-Speed TCP Variant\\	
+ 	\normalsize Sangtae Ha, Injong Rhee and Lisong Xu
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+This paper discusses about CUBIC, a congestion control protocol, its design and how it is useful with compared to the other TCP protocols in terms of scalability, stability, fairness, convergence etc.
+
+
+The paper starts by stating the problems with the standard TCP. Which is under utilization of the bandwidth due to large number of packets to be sent due to small window size increase. To counter this problem multiple TCP variations were proposed. One of the important one was BIC-TCP protocol. BIC was very stable and scalable. It used binary search to increase the window size which was RTT value dependent and hence it increases the window exponentially. BIC suffered from few problem. Window control of BIC was complex for implementation and analysis, its growth function was aggressive for TCP under short RTT or low latency networks and its fairness issue can be improved. 
+
+
+CUBIC is the enhanced version of the BIC-TCP. It simplified the complexity of BIC-TCP window adjustment algorithm. CUBIC replaced the convex and concave window growth by a cubic function, because of this CUBIC also become independent of RTT's and onnly depends on the difference between the two consecutive congestion events due to which CUBIC achieved good RTT-fairness and enhanced TCP-friendliness.\\ 
+
+window growth equation of CUBIC:
+\begin{equation}
+W(t) = C(t-K)^3 + W_{max}
+\end{equation}
+Where $C$ is the cubic parameter, $t$ is the elapsed time from the last window reduction, $K$ is the time period for the function to increase from $W$ to $W_{max}$ and $\beta$ is the decrease factor after a packet-loss. 
+
+\begin{equation}
+K = \sqrt[3]{\frac{W_{max}\beta}{C}}
+\end{equation}
+\begin{equation}
+W_{max} = \beta \cdot W_{max}
+\end{equation}
+
+window size adjustment for both concave and convex region.
+\begin{equation}
+cwnd_{new} = cwnd + \frac{W_{cubic} \cdot (t+RTT) - cwnd}{cwnd}
+\end{equation}
+
+\textbf{Comments:}
+\begin{itemize}
+	\item Very simple and powerful idea, since it is also being used in linux kernel.
+	\item Cubic calculation can be an overhead because of the very frequent congestion. 
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,74 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	How Hard Can It Be? Designing and Implementing a Deployable Multipath TCP\\	
+ 	\normalsize Costin Raiciu, Christoph Paasch,  Sebastien Barre, Alan Ford, Michio Honda, Fabien Duchene,  Olivier Bonaventure and Mark Handley
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+This paper tells that Network have become multipath since mobile devices have multiple connections, datacenters have redundant topologies and servers are multi-homed but even after that TCP uses single-path in network regardless of network topology since it is tied to source and destination addresses of the endpoints also TCP connection cannot even be load balanced across more than one path within the network. So the goal of this paper was to evolve TCP in such way that it can be able to use multiple paths in the network and support unmodified applications, works over current network and perform no worse than regular TCP.  
+
+
+Multipath TCP modifies the single TCP connection by dividing it across multiple subflows, each path is different in the network. The goal of dividing into multiple subflow is to explicitly move traffic off the more congested paths onto the less congested ones. Thats why linked congestion control mechanism can be used to control how much data is sent on each subflow. The challenge was in using Multipath TCP was to be robust in case of path failures and failures in the presence of middleboxes that attempt to optimize single-path TCP flows.
+
+The design of the MPTCP is similar to TCP but taking care of multiple problem such as connection setup, Adding subflows, reliable multipath delivery and connection \& its teardown. In Multipath TCP for a single MPTCP session multiple subflows are set up. Initial subflow is used to start MPTCP session and it is similar to setting up a regular TCP connection. After the first MPTCP subflow is established, additional subflows are setup. Each of them are also similar to a regular TCP connection, which is completed with SYN handshake and FIN tear-down is used. Any of the active subflows can be used to send data which has the capacity to take it.
+
+With the designing the multipath TCP we also have to take under consideration of implementation, Authors used multiple mechanism such as : Opportunistic retransmission, Penalizing slow subflows and  Buffer autotuning with capping, which helped minimize memory usage. Also we should able to revert to singlepath TCP where multipath TCP is not supported.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item Evolving a single path TCP to Multipath is very complex and there are multiple factor we have to take under consideration and handle them in such a way that it should not add a large overhead and perform worse than siglepath TCP.
+	\item Evaluation shows that there is some latency in setting up the connection which is its only drawback but this is obvious since multiple path needed to be setup instead of one. In other experiments multipath performs better than tradition TCP.
+\end{itemize}
+
+\end{document}

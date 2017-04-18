@@ -1,0 +1,70 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	The Design Philosophy of the DARPA Internet Protocols.\\	
+ 	\normalsize David D. Clark
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+This paper presents the reasoning or thoughts behind how Internet protocol suite and TCP/IP are designed which we are familiar with nowadays. The Authors says that the design philosophy of Internet protocols has evolved multiple times based on the different needs, their implementation and testing such as datagram idea or connectionless service.
+
+The fundamental idea behind its design according to author is providing a packet switch communication within different connected networks using gateways which also uses packet communications to implement store and forward mechanism. This fundamental goal is extended by second level goals lists. These goals were communication despite loss of networks or gateways, supporting multiple communication services, support variety of networks, distributed management of resources, its cost effectiveness, low level effort in host attachment and accountable resources use. To support the survivability of Internet during failure resulted in \textbf{fate-sharing approach} which gave ideas of not storing connection info at intermediate nodes and "stateless" packet switches i.e datagram network. To support different services and networks caused \textbf{TCP and IP layers} which also supported services as reliable or sequenced delivery, broadcast, multicast, priority ranking of transmitted packets etc. The other goals were lower in importance and did not had much impact on changing the design and they were also met less effectively and somewhat engineered with existing design. \\ 
+
+
+\textbf{Comments:}
+\begin{itemize}
+	\item Being this was developed as the military program the goals of actual users were of less significance while the system was begin designed and the goals which are more suitable to the general users were put in low priority and were just implemented. 
+	\item The datagram and Using TCP/IP were very useful since it provided extensibility to the network to support different kind of services within it and connection between different kind of network(ISP) were also possible.
+\end{itemize}
+
+\end{document}
