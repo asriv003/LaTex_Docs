@@ -1,0 +1,75 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Layering as Optimization Decomposition: A Mathematical Theory of Network Architectures\\	
+ 	\normalsize Mung Chiang, Steven H. Low, A. Robert Calderbank and John C. Doyle
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+
+Authors says that historically Network protocols have been designed in an Ad-hoc manner and piecemeal approaches are used for cross layering but it can be designed as the solutions to some global optimization problems thus the main objective of the paper was to model layering as optimization decomposition. 
+
+The core idea is think different vertical decomposition as the form of generalized network utility maximization(NUM) problem and are mapped to different layers. Each layer is then considered as a decomposed subproblem and there interfaces are function of primal or dual variables with the corresponding subproblems. Horizontal decomposition can also be applied within one functionality model. Authors says that multiple alternative decompositions are possible which can result into different layering architecture.
+
+The Authors say that there are two cornerstones for conceptual simplicity for network protocols: ``Network as Optimizer'' which is viewing protocols as distributed solution and reverse engineering mentality which give us simple and rigorous understanding for systematic design \& ``Layering as decomposition'' which gives analytical foundation for network architecture and different methodologies.  
+
+The Authors also says that primary motivation of NUM is to capture end-user objectives, different constraints, design freedom and its dynamics. Authors provide 3 steps for design process: formulate specific NUM problem, devise modularized and distributed solution for this problem and then explore different decompositions to provide choice of layered protocol stacks.
+
+Authors also give example of adoption of this methodology by the Industry. \textbf{TCP FAST} by reverse-engineering TCP and \textbf{FAST Copper} using end-user application utilities as the objective function are such examples. \textbf{TCP Reno/Red} and \textbf{FAST/DropTail} are TCP congestion problem handled using horizontal decomposition.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item Since It is an optimization problem there is no description on how to handle local minima's, whether there is a necessity of global minima or not. Another issues is rate of convergence while optimization.
+\end{itemize}
+
+\end{document}

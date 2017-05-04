@@ -1,0 +1,76 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Towards a SPDY'ier Mobile Web?\\	
+ 	\normalsize Jeffrey Erman, Vijay Gopalakrishnan,  Rittwik Jana and Kadangode K. Ramakrishnan
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+
+In this paper Authors proposed an alternative application layer protocol to HTTP called SPDY. HTTP is the most commonly used application layer protocol due to its simplicity and adaptability which uses TCP as its transport layer, but it suffers from some basic problem pointed out by authors such as, not able to utilize the full extent of TCP since HTTP connection are of small duration and exchange small amount of data. HTTP performs badly when there is high latency and packet loss in the networks. 
+
+SPDY tries to solve this problem by using a single TCP connection per domain for its transmission with all the capabilities of HTTP such as multiplexing data transmission, serving multiple outstanding requests, higher priority resource fetching and reduction of header information. Authors performed an extensive experiment over 4 months to compare the performance of HTTP and SPDY over 3G network, LTE networks and wired connection. 
+
+The main observation of the experiments were that SPDY does not outperform HTTP. Authors then pointed out that main reason of this is one TCP connection used by SPDY and cellular network \& TCP needs optimizations as well to increase the network performance. Other experimental results were same over wired connection HTTP and SPDY performs same on average but over LTE network SPDY somewhat outperform HTTP over long duration reason being how protocol operate over LTE.
+
+More in-depth experiments are also done by authors to get the better understanding of the cross layering interactions. SPDY performs badly because it has significant wait time between sending request and receiving response but it is compensated by reusing connection and avoiding connection setup. Effect of web page design is also observed for SPDY and HTTP. Eliminating Server-Proxy link bottleneck, How throughput between client and Proxy affect SPDY and Impact of Cellular State Machine of LTE and 3G is also experimented. Experiments also shows that in case there are multiple users and different load are on the network SPDY performs better than HTTP.     
+
+.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item Multiple extensions are itself suggested by authors such as using multiple line of TCP connection for SPDY, Not retaining the information such as RTT after idle period and impact of different TCP variants.
+	\item Even though SPDY can improve the network performance better with some more improvement changing the protocol from HTTP to SPDY will take a lot of effort and time since i think that adaptability in the network area is pretty slow and hacks are often used for improvements rather that changing the whole protocol.  
+\end{itemize}
+
+\end{document}

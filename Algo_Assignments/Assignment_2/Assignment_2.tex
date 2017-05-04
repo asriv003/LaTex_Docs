@@ -58,7 +58,7 @@
 %set headers and footers
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\textbf{CS 218:} Homework 1}
+\fancyhead[LE,RO]{\textbf{CS 218:} Homework 2}
 \fancyhead[RE,LO]{Abhishek Kumar Srivastava}
 \fancyfoot[CE,CO]{\leftmark}
 \fancyfoot[LE,RO]{\thepage}
@@ -90,7 +90,7 @@
 	\end{align*}
 	Master theorem cannot be applied on this equation. We need to apply transformation to convert into Master theorem equation.
 	
-	We can substitute $n = 2^m$ in the equation.
+	We can substitute $n = 2^m$ in the equation. Which will give us
 	\begin{align*}
 	T(2^m)&= 4 \cdot T(2^{m/2}) + \log^2(2^m) \\
 	&=  4 \cdot T(2^{m/2}) + m^2 \\
@@ -119,192 +119,117 @@
 	\end{align*}
 	By substituting back $m = \log{n}$ we get,
 	\begin{align*}
-	T(n) = \Theta(\log^2{n}\cdot \log{\log{n}}).
+	\boxed{T(n) = \Theta(\log^2{n}\cdot \log{\log{n}})}
 	\end{align*}
 \end{solution}
 
 \newpage
 \begin{solution}2
-	Since the wall is stretched infinitely in the both direction i have assumed the starting location as 0. From the starting point we will go $2^{i}$ steps first in the right side, come back to starting location and then we will go $2^{i}$ steps in the left side and return back to starting location and increase the value of $i$ by 1 where $i = 0,1...m$ which is nothing but doubling the steps to be taken in the next iteration for either side, we will continue until the door is found. One more assumption i am taking is while going from starting location to the $2^{i}th$ location we will check for the doors at each location but skipping the locations which are already checked that is doors between $0$ to $2^{i-1}$. Psuedo Code to solve this problem is given on page 3.\\
+	Given $A[1,\dots,n]$ as a fixed array of distinct integers in which we have to find the position for the elements in array $X[1,\dots,k]$.\\
 	
-	\textbf{Part 1.}\\
+	\textbf{Naive Solution:}\\
 	
-	The worst case will be when the door is on the left side and let us assume its value $n = 2^{m}+d$, where $ 1 \leq d \leq 2^{m}$ 
-	Since we are traversing in both direction the total cost would be:
+	We can search the positions of each element in $X[1,\dots,k]$ by doing linear search in array $A[1,\dots,n]$ for that element. Which will the complexity of
 	\begin{equation*}
-	T(n) = 2 \cdot (2\cdot( 1+2+4...2^{m})) + 2\cdot 2^{m+1} + 2^{m}+d
+	T(n) = O(n\cdot k)
 	\end{equation*}
-	Inner bracket cost is because we are going to $2^{i}th$ location and coming back and it is multiplied by 2 because we are doing it for both directions i.e Right and Left. $2\cdot 2^{m+1}$ because we are going till $2^{m+1}$ times in the right direction and then coming back to the starting location. $2^{m}+d$ is added because we are going till $2^{m}$ location in the left direction and next $d$ steps to find the door location. Therefore, 
-	\begin{equation*}
-	T(n) = 4 \cdot ( 1+2+4...2^{m}) + 2\cdot 2^{m+1} + 2^{m}+d
-	\end{equation*}
-	Which is equivalent to the following equation.
-	\begin{equation*}
-	T(n) = 4 \cdot (2^{m+1} - 1) + 4\cdot 2^{m} + 2^{m}+d
-	\end{equation*}
-	After simplifying in $2^{m}$ terms.
-	\begin{equation*}
-	T(n) = 8 \cdot 2^{m} - 4 + 4\cdot 2^{m} + 2^{m}+d
-	\end{equation*}
-	\begin{equation*}
-	T(n) = 13 \cdot 2^{m} + d -4
-	\end{equation*}
-	And since $n = 2^{m} + d$,$ 2^{m} = n-d$. By replacing it we can get.
-	\begin{equation*}
-	T(n) = 13 \cdot (n-d) + d - 4
-	\end{equation*}
-	\begin{equation*}
-	T(n) = 13 \cdot n - 12\cdot d - 4
-	\end{equation*}
-	\begin{equation*}
-	T(n) \leq 13 \cdot n
-	\end{equation*}
-	$\therefore T(n) = O(n)$\\
+	But this is not the lower bound. \\
 	
-	\textbf{Part 2.}\\
+	\textbf{Binary Decision Tree Solution:}\\
 	
-	Since we already got $T(n)$ expression from the Part 1 which is 
-		\begin{equation*}
-		T(n) = 13 \cdot n - 12\cdot d - 4
-		\end{equation*}
-	The worst case will be when $d = 1$.Which will the equation as,
+	We can do better than the naive solution to get the lower bound by using binary decision tree model. We first sort the array $A[1,\dots,n]$ and then do a binary search for each element in the array $X[1,\dots,k]$.
+	
+	Total cost of doing search this way will be cost of sorting the array and searching each element using binary search. Therefore,
 	\begin{equation*}
-	T(n) = 13 \cdot n - 16
+	T(n) = n\cdot \log{n} + k \cdot log{n}
 	\end{equation*}
-	 We can see the the equation that coefficient of $n$ is 13. which is the constant multiple in the worst case.
-	\begin{algorithm}
-		\begin{algorithmic}[h]
-			\Procedure{FIND\_DOOR\_LOCATION}{$A$}
+	($n \cdot \log{n}$) since it is the lower bound of sorting $A[1,\dots,n]$ using comparison model.\\
+	($k \cdot \log{n}$) since $X[1,\dots,k]$ contains $k$ elements and doing binary search on the sorted array $A[1,\dots,n]$ have the lower bound of $\log{n}$.
+	\begin{center}
+		$\therefore T(n) = O((n+k)\log{n})$ \\
+	\end{center}
+	This gives the lower bound on the time complexity, as a function of $n$ and $k$, using the binary decision tree model for searching and sorting.\\
+	
+	Pseudocode for described algorithm is as following: 
+	\begin{algorithm}[h]
+		%\caption{}
+		\begin{algorithmic}
+			\State{Array $A[1,\dots,n]$} \Comment{Fixed Array}
+			\State{Array $X[1,\dots,k]$} \Comment{Array to be searched}
+			\State{Array $I[1,\dots,k]$} \Comment{Array to store position}\\
 			
-			\If {door at $A[0] = true$} \Comment{Base case}
-			\State $door\_location \gets 0$
-			\State return $door\_location$
-			\EndIf
-			
-			\State $pos \gets 0$ \Comment{starting position}
-			\State $is\_door\_found \gets false$ \Comment{True if door found}
-			\State $door\_location \gets 0$
-			\State $steps\_to\_take \gets 1$ \Comment{How much step to take}
-			
-			\While {$is\_door\_found \neq true$} 
-			\State Traverse in $Right$ Direction
-			\While{$pos \leq steps\_to\_take/2$} \Comment{Skipping previously checked doors} 
-			\State $pos++ $ 
-			\EndWhile
-			
-			\While{$pos \leq steps\_to\_take$} \Comment{Check $Right$ Direction}
-			\State $pos++$
-			
-			\If {door at $A[pos] = true$} \Comment{Check Each location}
-			\State $door\_location \gets pos$
-			\State $is\_door\_found \gets true$
-			\State break
-			\EndIf
-			 
-			\EndWhile
-			
-			\If {$is\_door\_found \neq true$} \Comment{If door not found in $Right$ Side}
-			\While{$pos \neq 0$} \Comment{Traversing back to starting position} 
-			\State $pos-- $ 
-			\EndWhile
-			
-			\State Traverse $Left$ Direction
-			
-			\While{$pos \leq steps\_to\_take/2$} \Comment{Skipping previously checked doors} 
-			\State $pos++ $ 
-			\EndWhile
-			\While{$pos \leq steps\_to\_take$} \Comment{Check $Left$ Direction}
-			\State $pos++$
-			
-			\If {door at $A[pos] = true$} \Comment{Check Each location}
-			\State $door\_location \gets pos$
-			\State $is\_door\_found \gets true$
-			\State break
-			\EndIf
-			
-			\EndWhile
-			\EndIf
-			\If {$is\_door\_found \neq true$} \Comment{If door also not found $Left$ Side}
-			\While{$pos \neq 0$} \Comment{Traversing back to starting position} 
-			\State $pos-- $ 
-			\EndWhile
-			
-			\State $steps\_to\_take \gets 2*steps\_to\_take$ \Comment{Increasing steps to be taken by 2}
-			\EndIf
-			\EndWhile
-			\State return $door\_location$
-			\EndProcedure
+			\Function{FIND\_POSITION}{$A, X, I$}\\
+			\State{SORT($A$)} \Comment{Sort the array $A$ in increasing order}\\
+			\For{$i$ less than length($X$)}
+			\State{$I[i] =$ BINARY\_SEARCH($A,X[i]$)} \Comment{Search $X[i]$ in $A$ and return its position}
+			\EndFor\\
+			\EndFunction
 		\end{algorithmic}
 	\end{algorithm}
-
 \end{solution} 
 
 \newpage
-\begin{solution}1
-	\begin{enumerate}
-		\item Iterative substitutions \\
-		Given that 
-		\begin{align*}
-		T(n)&=\begin{cases}
-		1 & \text{$n = 1$}\\
-		4 \cdot T(\frac{n}{2}) + 3 & \text{$n > 1$} \\
-		\end{cases}\\
-		&= 4 \cdot (4 \cdot T(\frac{n}{4})+ 3) + 3 \\
-		&= 16 \cdot T(\frac{n}{4}) + 4 \cdot 3 + 3 \\
-		&= 16 \cdot (4 \cdot T(\frac{n}{8})+ 3) + 4 \cdot 3 + 3 \\
-		&= 64 \cdot T(\frac{n}{8}) + 16 \cdot 3 + 4 \cdot 3 + 3 \\
-		\cdot \\
-		\cdot \\
-		\cdot \\
-		&= 4^{i}.T(\frac{n}{2^{i}}) + 4^{i-1} \cdot 3 + 4^{i-2} \cdot 3 + ...+ 4^{0} \cdot 3 \\
-		&= 4^{i}\cdot T(\frac{n}{2^{i}}) + 3\cdot(4^{i-1} + 4^{i-2} + ...+ 4^{0}) \\
-		\text{Geometric series for ratio r $=$ 4} \\
-		&= 4^{i}\cdot T(\frac{n}{2^{i}}) + 3\cdot(\frac{4^{i} - 1}{4-1} )\\
-		&= 4^{i}\cdot T(\frac{n}{2^{i}}) + {4^{i} - 1}\\
-		\text {$i = \log_2(n)$ will give us the base case},\\
-		&= 4^{\log_2(n)}\cdot T(1) + 4^{\log_2(n)} -1 && \text{(since $i = \log_2(n)$)}\\
-		&= 2 \cdot 4^{\log_2(n)} -1\\
-		&= 2\cdot 2^{\log_2(n^{2})} -1 && \text{(log manipulation)}\\
-		\therefore	T(n)&= 2 \cdot n^{2} - 1 \\	
-		\end{align*}
-		
-		\item
-		\textbf{Proof by induction}\\
-		Given that 
-		\begin{align*}
-		T(n)&=\begin{cases}
-		1 & \text{$n = 1$}\\
-		4 \cdot T(\frac{n}{2}) + 3 & \text{$n > 1$} \\
-		\end{cases}
-		\end{align*}
-		
-		\text{\textit{From Iterative Substitution:}} $T(n) = 2 \cdot n^{2} - 1$\\
-		
-		\textbf{Proof:} Base case: $n = 2$\\
-		Calculate using given recurrence relation.
-		\begin{align*}
-		& T(2) = 4 \cdot T(\frac{2}{2}) + 3\\
-		& T(2) = 4 \cdot 1 + 3 = 7 && \text{Since, T(1) = 1}
-		\end{align*}
-		Calculate using derived asymptotic solution.
-		\begin{align*}
-		& T(2) = 2 \cdot n^{2} -1\\
-		& T(2) = 2 \cdot 2^{2} - 1 = 7	&& \text{Since, n = 2}	
-		\end{align*}
-		Since both result are the same hence derived solution holds.		\newpage
-		Induction hypothesis: T($\frac{n}{2}$) = $2 \cdot {(\frac{n}{2})}^{2}$ - 1 = $\frac{n^{2}}{2} - 1$
-		
-		Induction step: 
-		\begin{align*}
-		T(n) &= 4 \cdot T(\frac{n}{2})+ 3 \\
-		&= 4 \cdot (\frac{n^{2}}{2} - 1) + 3 && \text{(Substituting hypothesis)}\\
-		&= 4 \cdot (\frac{n^{2}}{2})- 4 + 3\\
-		&= 2 \cdot n^{2} - 1 \\
-		\text{Which is same as our hypothesis.} \\
-		\therefore T(n) = 2 \cdot n^{2} -1.
-		\end{align*}
-	\end{enumerate}
+\begin{solution}3  Implement a queue using two stacks $S_1$ and $S_2$.\\
 	
-\end{solution}
+	\textbf{Part 1}:
+	
+	Queue is data structure which follows \textbf{FIFO}(First In First Out) property. On the other hand Stack is data structure which follows \textbf{LIFO}(Last In First Out) property. Therefore to implement Queue using Stack we need two of them. We always treat one stack for en-queuing data and other one for de-queuing. 
+	
+	While \textsc{Enqueue}$(x)$ operation we push the element $x$ in one stack for example $S1$. For \textsc{Dequeue}$(x)$ operation we first check that other stack($S2$) is empty or not. If it is not empty we pop the top element from $S2$ stack. If it is empty we then transfer all the elements from $S1$ to $S2$ and then perform the pop operation.
+	By using this method we can achieve \textbf{FIFO} property. Psuedocode for the above described method is following:
+	
+	\begin{algorithm}[h]
+		%\caption{}
+		\begin{algorithmic}
+			\State{Stack $S1$} \Comment{Input stack}
+			\State{Stack $S2$} \Comment{Output stack}\\
+			
+			\Function{ENQUEUE}{$x$}
+			\State{$S1 \cdot push(x)$} \Comment{Pushing in the stack $S1$}
+			\EndFunction \\
+			
+			\Function{DEQUEUE}{}()
+			\If {$S2.empty() = true$} \Comment{Check if $S2$ is empty}
+			\State{TRANSFER\_ELEM\_S1\_TO\_S2()} \Comment{Transfer all elements from $S1$ to $S2$}
+			\EndIf
+			\State{return $S2.pop()$}\Comment{Pop the element from $S2$}
+			\EndFunction\\
+			
+			\Function{TRANSFER\_ELEM\_S1\_TO\_S2}{}()
+			\While{$S1.empty() = false$}\Comment{While $S1$ is not empty}
+			\State{$S2.push(S1.pop())$}\Comment{Pop elements from $S1$ and push in $S2$}
+			\EndWhile
+			\EndFunction
+		\end{algorithmic}
+	\end{algorithm}
+	
+	\textbf{Part 2}: Accounting Method
+	
+	Since we are using two stack we will have 4 operation to perform. push and pop for both $S1$ and $S2$.
+	\begin{itemize}
+		\item \textbf{Proposed charging Scheme} :
+		\begin{itemize}
+			\item For \textsc{Enqueue}$(x)$ operation we will charge \$4
+			\begin{itemize}
+				\item \$1 pays for the pushing the element in $S1$. 
+				\item \$3 is deposited(credit invariant) on the element to pay \$1 when popping the element from $S1$ later.
+				\item \$1 pays for pushing the element in $S2$ from remaining \$2.
+				\item \$1 pays for popping the element from $S2$ from the last remaining \$1.
+			\end{itemize}
+			\item For \textsc{Dequeue}$()$ operation we will charge \$0
+		\end{itemize}
+	\end{itemize}
+	
+	For any sequence of $n$ For \textsc{Enqueue}$(x)$ and $n$ \textsc{Dequeue}$()$ operations the cost will be
+	\begin{center}
+	$T(n) = (4 + \dots \text{n times} \dots +4) + (0 + \dots \text{n times} \dots + 0) = 4n$ \\
+	\end{center}
+	$\therefore$ Each operation costs
+	\begin{center}
+		\boxed{$T($n$) = 4$n$/2$n$ = 2 = O(1)$}
+	\end{center}
+	
+	 
+	\end{solution}
 
 \end{document}

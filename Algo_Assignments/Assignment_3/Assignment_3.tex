@@ -1,0 +1,312 @@
+% homework template
+\documentclass[a4paper,11pt]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+	
+	\Large
+ 	\textbf{CS 218, Spring 2017}
+ 	\hfill
+ 	Homework 3
+ 	\par
+ 	
+	\Large
+	Abhishek Kumar SRIVASTAVA
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\par
+ 	
+ 	%plagiarism statement
+ 	\begin{center}
+
+ 	\vspace{.2in}
+ 	
+ 	\textit{I certify that this submission represents my own original work }
+ 	\par
+	\vspace{.2in}
+	\makebox[3.0in]{\hrulefill}
+	\par
+
+ 	\end{center}
+ 	
+ 	\hrulefill
+ 	\par \vspace{2ex}
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textbf{CS 218:} Homework 3}
+\fancyhead[RE,LO]{Abhishek Kumar Srivastava}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+%some custom commands, taken from stanford template
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\begin{solution}1	
+	Considering the polynomials represented by following equations:
+	\begin{equation*}
+	A(x) = a_0 + a_1\cdot x + a_2\cdot x^2 + \dots + a_{n}\cdot x^{n}
+	\end{equation*}
+	\begin{equation*}
+	B(x) = b_0 + b_1\cdot x + b_2\cdot x^2 + \dots + b_{n}\cdot x^{n}
+	\end{equation*}
+	we can rewrite the equations as following:
+	\begin{equation*}
+	A(x) = a + b\cdot x^{n/2} 
+	\end{equation*} 
+	\begin{equation*}
+	B(x) = c + d\cdot x^{n/2}
+	\end{equation*}
+	$a,b,c$ and $d$ are equations of polynomials $n/2$.\\
+	After multiplying them we get,
+	\begin{equation*}
+	C(x) = A(x)\cdot B(x) = (a + b\cdot x^{n/2}) \cdot (c + d\cdot x^{n/2}) 
+	\end{equation*}
+	\begin{equation*}
+	C(x) = ac + (ad + cb )\cdot x^{n/2} + bd \cdot x^{n}
+	\end{equation*}
+	The above equation shows that we have 4 terms to multiply $i.e$  $ac$, $ad$, $cb$ \& $bd$. But we can rewrite $(ad + cd)$ by $(a+b)(c+d) - ac - bd$
+	\begin{equation*}
+	C(x) = ac + ((a+b)(c+d) - ac - bd)\cdot x^{n/2} + bd \cdot x^{n}
+	\end{equation*}
+	This equation only needs 3 multiplications: $ac$, $bd$ \& $(a+b)(c+d)$. 
+	
+	Therefore for each division we need 3 multiplication of $n/2$ polynomials and $O(n)$ to add them all, which will give the recurrence relation as 
+	\begin{align*}
+	T(n)&= 3 \cdot T(n/2) + c\cdot n
+	\end{align*}
+	
+	Now we can apply Master theorem on the above equation.\\
+
+	\textbf{Case 1:} $f(n)$ $\epsilon$ $O(n^{\log_b{a} - \varepsilon})$ where $\varepsilon > 0$.\\
+	\begin{equation*}
+	n \epsilon O(n^{\log_2{3} - \varepsilon})
+	\end{equation*}
+	
+	For any $0.9 > \varepsilon > 0$ this case holds valid. So case 1 pass.Thats why,
+
+	\begin{align*}
+	\boxed{T(n) = \Theta(n^{\log_2{3}})}
+	\end{align*}
+\end{solution}
+
+\newpage
+\begin{solution}2
+	
+	\textbf{Part a:}
+	
+	Given Matrix
+	\begin{equation*}
+		A =
+		\begin{bmatrix}
+		a & b \\
+		c & d
+	\end{bmatrix}
+	\end{equation*}
+	We have to multiply matrix A with itself. Let $B = AA$.
+	\begin{equation*}
+	B =
+	\begin{bmatrix}
+	a & b \\
+	c & d
+	\end{bmatrix}
+	\begin{bmatrix}
+	a & b \\
+	c & d
+	\end{bmatrix} \\
+	= \begin{bmatrix}
+	a^2+bc & ab+bd\\
+	ac+cd & bc+d^2
+	\end{bmatrix}\\
+	\end{equation*}
+	As $ ab=ba $ where $a$ and $b$ are $1$x$1$ matrices or scalar. We can rewrite the matrices as,
+	\begin{align*}
+	B &=
+	\begin{bmatrix}
+	a^2+bc & ba+bd\\
+	ca+cd & bc+d^2
+	\end{bmatrix}\\
+	&=
+	\begin{bmatrix}
+	a^2+bc & b(a+d)\\
+	c(a+d) & bc+d^2
+	\end{bmatrix}
+	\end{align*}
+	Therefore all the terms which could be used to calculate the product of $2$x$2$ matrices are following 5 products
+	\begin{align*}
+	M_1 &= a^2 \\
+	M_2 &= bc \\
+	M_3 &= b(a+d) \\
+	M_4 &= c(a+d) \\
+	M_5 &= d^2 \\
+	\end{align*}
+	
+	\textbf{Part b:}
+	
+	As above from by multiplying two matrices we get,\\
+	\begin{equation*}
+	B= \begin{bmatrix}
+	a^2+bc & ab+bd\\
+	ac+cd & bc+d^2
+	\end{bmatrix}\\
+	\end{equation*}\\
+	but since if $a$,$b$,$c$ \& $d$ are $n/2$ x $n/2$ matrices and not the $1$x$1$ matrices we cannot apply $ab$ = $ba$ since matrix multiplication does not obey commutative property. It works on the above problem because they are scalar values and they obey commutative property. So,\\
+
+	\begin{equation*}
+	\begin{bmatrix}
+	a^2+bc & ab+bd\\
+	ac+cd & bc+d^2
+	\end{bmatrix} \ne 
+	\begin{bmatrix}
+	a^2+bc & ba+bd\\
+	ca+cd & bc+d^2
+	\end{bmatrix}
+	\end{equation*}\\
+	And therefore matrix multiplication cannot be reduced to 5 submatrices multiplications.
+\end{solution} 
+
+\newpage
+\begin{solution}3  Given an array A of length $n$ we have to return $i$ \& $j$ such that sum of the subarray is maximized using divide and conquer approach.\\
+
+	Create a function called \textbf{SubArrayMaxSum} which will take an $array$ $A$, $start$ and $endpoint$ of the array as input and it will return corresponding $i$ \& $j$ for that array which will  give the maximum sum of array from $i^{th}$ \& $j^{th}$ index $i.e$ Subarray.\\
+	
+	Inside the \textbf{SubArrayMaxSum} function first check the base case if it is single element just return that index as both $i$ \& $j$. If it is an array with more than one element divide the array into two equal halves and do \textbf{SubArrayMaxSum} recursive call for both halves. After the both halves return their corresponding $i$ \& $j$ then merge the subarrays and return optimal $i$ \& $j$ which maximize the sum for the whole merged array.\\
+	
+	Merge will be done by first calculating sum of left subarray and right subarray. Then use variables called $MaxSum$,  $TempSum$, $i\_{final}$ \& $j\_{final}$. $MaxSum$ \& $TempSum$ is assigned sum of left subarray and $i\_{final}$ \& $j\_{final}$ values are set to $i$ \& $j$ value returned by left subarray as well. Then we will calculate the sum from the end of the left subarray index $i.e$ $j\_{left}^{th}$ index till end of right subarray $i.e$ $j\_{right}^{th}$ index. Calculate the sum by adding one element at a time and checking some conditions. Maintain a temp $i$ \& $j$ which keeps track of subarray with sum between $temp\_i^{th}$ \& $temp\_j^{th}$ element $i.e$ $TempSum$ . If sum goes below zero, reset $TempSum$ value to 0 \& $temp\_i^{th}$ \& $temp\_j^{th}$ to next index value and continue. If $TempSum$ value is greater than $MaxSum$ set $temp\_j{th}$ index value to this index and $TempSum$ to $MaxSum$. After the loop ends if $MaxSum$ is greater than sum of right subarray calculated before merge then set $i\_{final}$ \& $j\_{final}$ as $temp\_i^{th}$ \& $temp\_j^{th}$ value otherwise as $i\_{left}^{th}$ \& $j\_{left}^{th}$. Return $i\_{final}$ \& $j\_{final}$.\\
+	
+	Since we are dividing an array of $n$ into 2 $n/2$ halves calling them recursively and merging them again after recursion is over in $O(n)$ in worst case, Therefore the recurrence relation can be written as
+	\begin{center}
+		$T(n) = 2 \cdot T(n/2) + O(n)$ \\
+	\end{center}
+	Applying Master theorem on the above equation.\\
+	
+	\textbf{Case 1:} $f(n)$ $\epsilon$ $O(n^{\log_b{a} - \varepsilon})$ where $\varepsilon > 0$.\\
+	\begin{equation*}
+	n \epsilon O(n^{\log_2{2} - \varepsilon} = O(n^{1 - \varepsilon})
+	\end{equation*}
+	
+	For any $\varepsilon > 0$ this will not be true, So case 1 fails.\\
+	
+	\textbf{Case 2:} $f(n)$ $\epsilon$ $\Theta(n^{\log_b{a}}\cdot \log^k n)$ where $k \ge 0$.\\
+	
+	$n$ $\epsilon$ $\Theta(n^{\log_2{2}}\cdot \log^k n)$ = $\Theta(n\cdot \log^k n)$\\
+	
+	$k = 0$ satisfy the equation. So case 2 holds. Thats why,
+
+	\begin{align*}
+	\boxed{T(n) = \Theta(n\cdot \log{n})}
+	\end{align*}
+	Which is required Time complexity for this problem.
+	\newpage
+	Psuedocode for the above described method is following:
+	
+	\begin{algorithm}[!h]
+		%\caption{}
+		\begin{algorithmic}
+			\Function{SUBARRY\_MAXSUM}{$A$,$start$,$end$}
+			
+			\If{$start == end$}
+			\State{return $start$,$end$}
+			\EndIf
+			
+			\State{$mid = (start + end)/2$} \Comment{Calculate mid point of Array}\\
+			
+			\State{//Divide}
+			
+			\State{$i\_{left}, j\_{left}$ = SUBARRY\_MAXSUM($A$,$start$,$mid$)} \Comment{Left Subarray}
+			
+			\State{$i\_{right}, j\_{right}$ = SUBARRY\_MAXSUM($A$,$mid$+1,$end$)} \Comment{Right Subarray}\\
+			
+			\State{//Merge}
+			
+			\State{$Left\_Sum$ = $\sum_{k = i\_{left}}^{j\_{left}} A_k$} \Comment{Sum of left subarray}
+			
+			\State{$Right\_Sum$ = $\sum_{k = i\_{right}}^{j\_{right}} A_k$} \Comment{Sum of right subarray}\\
+			\If{$Left\_Sum \ne 0$}
+			\State{$MaxSum = TempSum = Left\_Sum$} \Comment{Initialization}
+			\Else
+			\State{$MaxSum = TempSum = 0$} \Comment{To handle if sum is negative}
+			\EndIf\\
+			
+			\State{$i\_{final} = temp\_i = i\_{left}$} \Comment{Initialization}
+			
+			\State{$j\_{final} = temp\_j = j\_{left}$}\Comment{Initialization}\\
+			
+			\For{$k$ = $i\_{left} +1$ to $j\_{right}$} \Comment{calculation of sum by merging both subarray}
+			
+			\State{$TempSum$ = $TempSum$ + $A[k]$}
+			
+			\If{$TempSum < 0$} \Comment{If $TempSum$ is negative ,reset subarray }
+			\State{$TempSum = 0$}
+			\State{$temp\_i = k+1$}
+			\State{$temp\_j = k+1$}
+			
+			\Else
+			\If{$TempSum > MaxSum$} \Comment{If $TempSum$ is larger, store parameters}
+			\State{$MaxSum = TempSum$}
+			\State{$temp\_j = k$}
+			
+			\EndIf
+			
+			\EndIf
+			
+			\EndFor\\
+			
+			\If{$MaxSum < Right\_Sum$} \Comment{If Right subarray is sum is larger without merge}
+			\State{$i\_{final} = i\_right$}
+			\State{$j\_{final} = j\_right$}
+			
+			\Else
+			\If{$MaxSum > 0$}	\Comment{To handle if merged subarray is negative sum}
+			\State{$i\_{final} = temp\_i$}
+			\State{$j\_{final} = temp\_j$}
+			\EndIf
+			
+			\EndIf\\
+			
+			\State{return $i\_{final}$,$j\_{final}$} \Comment{returning final $i$ and $j$ index values}
+			
+			\EndFunction \\
+		\end{algorithmic}
+	\end{algorithm}
+	
+	 
+	\end{solution}
+
+\end{document}

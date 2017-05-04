@@ -1,0 +1,72 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Measuring and Evaluating Large-Scale CDNs\\	
+ 	\normalsize Cheng Huang, Angela Wang, Jin Li and Keith W. Ross
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+
+This is a evaluation paper where Authors have tried to measure multiple aspects of two different Content Distribution Networks(CDN). CDN have the responsibility of serving content to multiple locations over multiple backbones or ISPs. CDN always tries to optimize the delay to serve to content to the user to make end-user experience better. Such optimization includes number of servers, number of DNS servers, find server nearest to the user etc.   
+
+Authors have evaluated two CDNs: Akamai and Limelight. Both CDN differ fundamentally on their design philosophy. \textbf{Akami} is based on $enters$ $deep$ $into$ $ISPs$, which tries to get close to the end users to improve both delay and throughput performance by deploying CDN inside ISP POPs. Drawback of this is maintaining and managing servers and also very complicated methods to transfer data among servers. \textbf{Limelight} design is based on $bring$ $ISPs$ $to$ $home$, which is building large CDNs at few key locations and connecting these CDNs with private high speed connection to transfer data among them. The locations where these CDNs are located is near POPs of many large ISPs. This network design require less maintenance and management of the servers but have slightly higher delay to the end users.
+
+In this paper Authors have performed evaluation of CDN by determining CDN's content \& DNS servers which is measuring the number of servers are being used as CDN and DNS using different methodology for Akamai and Limelight since they are different designs and making other different observations regarding it, measuring CDN delay performance which consist of DNS resolution delay i.e finding out best CDN for the user and Content server delay i.e RTT between client and CDN server. CDN availability is also evaluated for each CDNs by determining cluster \& server availability and their continuous uptime using king approach. Methodology for CDN deployment and IP Anycast is also evaluated which is robustness of data centers used by CDNs and how they affect the network performance.   
+.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item Paper was very practical and very easy to understand. It gave insights on what parameters we have to keep in mind if a new CDN network is to be designed, like which design suits the content, data center locations and how many is needed.
+\end{itemize}
+
+\end{document}
