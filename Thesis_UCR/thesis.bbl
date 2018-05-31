@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{Cui}
+Ang Cui, Michael Costello, and Salvatore~J Stolfo.
+\newblock When firmware modifications attack: A case study of embedded
+  exploitation.
+\newblock {\em NDSS}, 2013.
+
+\bibitem{Jang}
+Jiyong Jang, David Brumley, and Shobha Venkataraman.
+\newblock Bitshred: Feature hashing malware for scalable triage and semantic
+  analysis.
+\newblock {\em CCS}, 2011.
+
+\bibitem{Saeb}
+Andreas S{\ae}bj{\o}rnsen, Jeremiah Willcock, Thomas Panas, Daniel Quinlan, and
+  Zhendong Su.
+\newblock Detecting code clones in binary executables.
+\newblock {\em ISSTA}, 2009.
+
+\end{thebibliography}

@@ -1,0 +1,32 @@
+\contentsline {chapter}{List of Figures}{ix}
+\contentsline {chapter}{List of Tables}{x}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Background}{2}
+\contentsline {section}{\numberline {1.2}Purpose}{9}
+\contentsline {section}{\numberline {1.3}Outline}{11}
+\contentsline {chapter}{\numberline {2}Theory}{13}
+\contentsline {section}{\numberline {2.1}Binary Disassembly}{13}
+\contentsline {section}{\numberline {2.2}Control Flow Graphs}{18}
+\contentsline {section}{\numberline {2.3}Program Dependency Graphs}{20}
+\contentsline {subsection}{\numberline {2.3.1}Control Dependency Graphs}{20}
+\contentsline {subsection}{\numberline {2.3.2}Data Dependency Graphs}{21}
+\contentsline {section}{\numberline {2.4}Neural Network}{22}
+\contentsline {subsection}{\numberline {2.4.1}Siamese Architecture}{26}
+\contentsline {chapter}{\numberline {3}Approach}{28}
+\contentsline {section}{\numberline {3.1}Raw Feature Extraction}{28}
+\contentsline {subsection}{\numberline {3.1.1}CFG Features}{28}
+\contentsline {subsection}{\numberline {3.1.2}PDG Features}{28}
+\contentsline {section}{\numberline {3.2}Neural Network Model}{28}
+\contentsline {subsection}{\numberline {3.2.1}Hyperparameters}{28}
+\contentsline {chapter}{\numberline {4}Evaluation}{29}
+\contentsline {section}{\numberline {4.1}Implementation and Setup}{29}
+\contentsline {subsection}{\numberline {4.1.1}Sample Generation}{29}
+\contentsline {subsection}{\numberline {4.1.2}Training Details}{29}
+\contentsline {section}{\numberline {4.2}Accuracy}{29}
+\contentsline {subsection}{\numberline {4.2.1}CFG-Based}{29}
+\contentsline {subsection}{\numberline {4.2.2}PDG-Based}{29}
+\contentsline {section}{\numberline {4.3}Efficiency}{29}
+\contentsline {subsection}{\numberline {4.3.1}CFG-Based}{29}
+\contentsline {subsection}{\numberline {4.3.2}PDG-Based}{29}
+\contentsline {chapter}{\numberline {5}Conclusions}{30}
+\contentsline {chapter}{Bibliography}{31}

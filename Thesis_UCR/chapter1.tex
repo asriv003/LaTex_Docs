@@ -1,0 +1,288 @@
+\chapter{Introduction}
+Today software applications in some form or another is used in every aspect of our lives. Softwares are being constantly developed to handle more complex issues while being scalable to millions of users and due to this complexity involved in development they may suffer from serious software implications such as exploitable malwares \& vulnerabilities. The study by Cui et al. showed that 80.4\% of vendor-issued firmware is released with multiple known vulnerabilities, and many
+recently released firmware updates contain vulnerabilities in third-party libraries that have been known for over eight years \cite{Cui}. 
+
+Most malware's developed today are not created from scratch but in some way they are modification of some existing malware to create new ones. This can be used to our advantage by using code reuse detection to generate feature vectors for those and use with machine learning algorithms that can recognize new or similar malware or vulnerabilities \cite{Jang}. One of the other reason for analyzing binaries for finding vulnerabilities and plagiarism are often lack of source code because of third-party software\cite{Saeb} or not having access of source codes we wish to perform analysis on but almost everyone having access to binary (i.e., executable) code. Binary analysis is thus important for understanding the inner workings of malware or exploring vulnerabilities in existing systems but doing it manually is a very intensive task. Due of these challenges binary analysis is an very important area of research in computer science and automated tools which can do the analysis efficiently and effectively are in very high demand.
+\section{Background}
+In binary code analysis detecting similar functions in binary executables remains one of the fundamental problem and is well known as ``binary code similarity detection'' problem. 
+
+Only recently, researchers have started to tackle the problem of cross-platform binary code similarity detection. These efforts propose to extract directly from binary code
+various robust platform-independent features for each node in the control flow graph to represent a function. Then, to conduct a binary code similarity detection, a graph matching algorithm is used to
+check whether two functions’ control flow graph representations are similar. On the other hand, Genius learns high-level feature representations from the control flow graphs and encodes
+(i.e., embeds) the graphs into embeddings (i.e., high dimensional numerical vectors). To compute the embedding of a binary function, however, it also relies on graph matching algorithms to compute
+the similarity between the target function and a codebook of binary functions.
+
+Unfortunately, such graph matching-based approaches have two inevitable drawbacks. First, the similarity function approximated by fixed graph matching algorithms is hard to adapt to different
+applications. For example, given two pieces of binary code which differ in only a few instructions, in the application of plagiarism detection, they may be considered as similar, since the majority of the code is identical; but in the application of vulnerability search, they may be considered dissimilar, since a few instructions’ difference may fix an important vulnerability. A manually designed similarity function cannot fit in both scenarios by nature.
+
+Second, the efficiency of all similarity detection approaches based on graph matching is bounded by the efficiency of the graph matching algorithms (such as bipartite graph matching). However, the
+graph matching algorithms are slow, i.e., requiring super-linear runtime in the graph size. Thus such approaches are inevitably inefficient.
+
+In recent years, deep learning has been applied to many application domains, including binary analysis, and has shown stronger results than other approaches. The advantage of deep
+neural networks is that they can represent a binary analysis task, e.g., generating embedding for a binary function, as a neural network whose parameters can be trained end-to-end, so that it relies
+on as little domain knowledge (e.g., graph matching in previous approaches) as possible. Further, a deep neural network-based approach can be adaptive by design, since the neural network can
+be trained with different data to fit into different application scenarios or tasks. Also, a deep neural network model can be computed efficiently, i.e., with runtime linear to the input-size and the network-size.
+
+
+Binary analysis can be difficult because we are missing abstractions provided by programming languages such as data types and data structures. These abstractions make it easier to reason about how data and inputs drive the paths of execution. Despite these challenges there are inherent advantages to performing binary analysis. Binaries contain platform specific details which are only available at execution time. Information such as “memory layout, register usage and execution order” is important for detecting many common types of vulnerabilities such as memory corruption and buffer overflows. For these reason and more, binary analyses a specific type of program analysis is the focus of security researchers in recent years and the volume of software to be examined as lead to a strong interest in building automated binary analysis systems that can examine binary software at scale.
+
+A practical clone search engine relies on a robust vector rep-
+resentation of assembly code. However, the existing clone search
+approaches, which rely on a manual feature engineering process
+to form a vector for every assembly function, fail to identify those
+unique patterns that can statistically distinguish assembly functions.
+To address this problem, we proposed to learn a vector representa-
+tion of assembly functions based on assembly code. We adopt and
+customize a text representation learning model and name this ap-
+proach Asm2Vec. Asm2Vec only needs assembly code and does not
+require any prior knowledge such as the correct mapping between
+assembly functions. It can be trained on an arbitrary sequence of as-
+sembly code. We conduct extensive experiments and benchmark the
+learning model with different state-of-the-art static and dynamic
+clone search approaches. We show that the learned representation
+can support finding semantic clones and significantly outperforms
+existing methods. Compared with traditional features, it is resilient
+to different compiler optimizations and heavy obfuscation tech-
+niques.
+
+However, it is a challenging
+problem due to the fact that there are varieties of compiler opti-
+mizations and code obfuscation techniques that make equivalent
+assembly functions appear to be very different. These techniques
+have a strong impact on the resulting assembly instructions and the
+linear layout of the assembly code. Figure 1 shows some examples
+of assembly functions that correspond to the same source code. The
+major challenge is how to identify these semantically equivalent
+but structurally different assembly functions as clones.
+
+Typically, the following four categories of features are used in the literature
+for assembly clone search.
+
+Token-based features. These features model the similarity be-
+tween two assembly code functions based on a set of tokens. The
+tokens can include constants [15], assembly instructions such as
+n-grams or n-perms [15], or assembly instructions with normal-
+ized operands [6, 8, 28]. Typically, the frequency value is used to
+construct the feature vector. Constant tokens are robust if they
+are weighted correctly. Some common constants such as the ones
+used for stack manipulation are insufficient to distinguish assembly
+functions, which leads to a relatively lower level of recall rate as
+shown in [15]. Instruction-based tokens have a weak robustness
+since the selected compiler, compiler optimization settings, and the
+obfuscation techniques all have a strong influence on the choice of
+instructions. The same logic can be expressed differently in assem-
+bly code. More importantly, instruction tokens used as features fail
+to capture the semantic relationship between tokens. For example,
+the assembly instructions Add and Sub are similar in the sense
+that they are both arithmetic instructions. To address this problem,
+in [7, 9] instructions are classified into categories such as transfer,
+algorithmic, and stack operations, among others. However, they
+fail to model the relationship between instructions across different
+categories. The best way is to learn the relationship directly from
+data. Let the assembly code itself show what assembly instructions
+are similar by considering the context in which they co-occur. For
+example, instructions appearing around stack registers are similar
+as they somehow relate to stack manipulation. Likewise, instruc-
+tions appearing around floating point registers are similar in the
+sense that they somehow relate to floating point operations and
+vice versa.
+
+Text-based features. Studies such as [5] fall into this category.
+It models the similarity between two assembly functions or frag-
+ments based on a customized string editing distance. String editing
+distance is not robust, since the linear layout of the assembly code
+can be modified easily. Obfuscator can substitute instructions with
+their semantically equivalent but syntactically different form, which
+leads to a very different editing distance. A good representation of
+assembly code should be able to identify position-invariant patterns
+that is robust to different linear layouts.
+
+Graph-based features. Studies under this category compare as-
+sembly functions using subgraph isomorphism algorithms [6, 7, 25]
+or a set of graph substructures [9, 15, 17] as features. Graph-based
+features rely on the correct detection of basic block boundaries
+and reconstruction of Control Flow Graphs (CFG). Graph-based fea-
+tures are not robust, since different compiler optimization settings
+can already significantly change the control flow graph by loop
+unrolling and function inlining. Some approaches use subgraphs
+that consists of 2-3 nodes as features [16, 17]. Their robustness
+is therefore enhanced. Even if the CFG is heavily modified, some
+important logics and subgraph structures still remain the same.
+These features are less sensitive to CFG modifications. However,
+a graph flattening obfuscation technique from Obfuscator-LLVM
+(O-LLVM) [14] that destroys all the subgraph structures can make
+the graph-based features useless.
+
+Dynamic features. Studies under this category dynamically exe-
+cute fragments of assembly code and use them as features [3, 4, 25].
+These features normalize assembly instructions that are semanti-
+cally equivalent but syntactically different. However, one of the
+main problems is that it requires a pair-wise full permutation of
+input/output variables to match the symbolic expressions extracted
+from the assembly code. This process is slow and can hardly be
+scalable without developing a specialized indexing schema for sym-
+bolic expression. Moreover, different assembly instructions have
+different side effects such as setting the flag bits. When matching
+assembly functions, it is difficult to determine what is the main
+logic and what would be the correct set of input and output.
+
+All the aforementioned approaches are based on the manual
+feature engineering process, in which we make several assump-
+tions. Thus, the chosen representation may not truly embrace the
+important patterns that distinguish one assembly function from an-
+other. An experienced reverse engineer does not identify a known
+function by looking through the whole content or logic, but rather
+pinpoint those critical patterns that identify a specific function
+based on his/her past experience in binary analysis. Inspired by the
+recent successful application of representation learning in Natural
+Language Processing (NLP) tasks [18, 19], we find that represen-
+tation learning particularly fits the need of assembly clone search.
+It is possible to simulate the way in which an experienced reverse
+engineer works by asking a machine learning model to see many
+assembly code data and letting the assembly code data tell what is
+the best representation that distinguishes one function from the
+others.
+
+We propose a novel approach, namely Asm2Vec, for semantic
+assembly clone detection. It is the first work that employs rep-
+resentation learning to construct a semantic feature vector of
+the assembly code. All previous research on assembly code clone
+relies on the manual feature engineering process. Asm2Vec learns
+representation of assembly code as a way to mitigate the afore-
+mentioned issues in current hand-crafted features.
+
+We customize an existing sequence-based text representation
+learning model for graph-based assembly code function. The
+model learns latent semantics between tokens and represents
+an assembly function as a weighted mixture of collective seman-
+tics of tokens. The learning process does not require any prior
+knowledge about assembly code, such as compiler optimization
+settings or the correct mapping between assembly functions. It
+only needs assembly code functions. We discuss the differences
+between the assembly code and text data, as well as the issues we
+had in applying the representation learning on assembly code.
+
+We conduct extensive experiments with all the combinations of
+optimization levels in the GNU GCC compiler and different ob-
+fuscation techniques of Obfuscator-LLVM [14] with the CLANG
+compiler. It is the first clone search experiment that covers a
+strong obfuscator which substitutes instructions, splits basic
+blocks, adds bogus logics, and completely destroys the original
+control flow graph. We benchmark various state-of-the-art as-
+sembly clone search techniques in the experiment. We show
+that by using representation learning, a simple cosine-similarity-
+based approach significantly outperforms the others regarding
+both recall and precision.
+
+
+\section{Purpose}
+Inspired by these advantages, in this work, we propose a deep
+neural network-based approach to generate embeddings for binary
+functions for similarity detection. In particular, assuming a binary
+function is represented as a control-flow graph with attributes at-
+tached to each node, we use a graph embedding network to convert
+the graph into an embedding. Previously, graph embedding net-
+works have been proposed for classification and regression tasks in
+domains such as molecule classification [11]. However, our work is
+in similarity detection, which is different from classification, and
+thus their approach does not apply to our task directly. Instead,
+we propose a new approach to computing graph embedding for
+
+similarity detection, by combining graph embedding networks into
+a Siamese network [5] that naturally captures the objective that
+the graph embeddings of two similar functions should be close to
+each other and vice versa. This entire network model can then be
+trained end-to-end for similarity detection.
+Further, we design a new training and dataset creation method
+using a default policy to pre-train a task-independent graph em-
+bedding network. Our approach constructs a large-scale training
+dataset using binary functions compiled from the same source code
+but for different platforms and compiler optimization levels. Our
+evaluation demonstrates that this task-independent model is more
+effective and generalize better to unseen functions than the state-
+of-the-art graph matching-based approach [15].
+One advantage of the neural network-based approach is that
+the pre-trained model can be retrained quickly in the presence
+of additional supervision to adapt to new application scenarios.
+Our evaluation shows that with such additional supervision, the
+retrained model can efficiently adapt to novel tasks. Different from
+previous approaches such as Genius, which would take more than
+a week to retrain the model, training a neural network is very
+efficient, and each retraining phase can be done within 30 minutes.
+This efficiency property enables practical usage of the retraining to
+improve the quality of similarity detection.
+We have implemented a prototype called Gemini. Our evalu-
+ations demonstrate that Gemini outperforms the state-of-the-art
+approaches such as Genius [15] by large margins with respect to
+both accuracy and efficiency. For accuracy, we apply Gemini to
+the same tasks used by Genius to evaluate both task-independent
+and task-specific models. For the former, the AUC (Area Under the
+Curve) of our pre-trained task-independent model is 0.971, whereas
+AUC for Genius is 0.913. For the latter, from a real-world dataset,
+our task-specific models can identify on average 25 more vulnera-
+ble firmware images than Genius among top-50 results. Note that
+previous approaches do not provide the flexibility to incorporate
+additional task-specific supervision efficiently. Thus the retraining
+process is a unique advantage of our approach over previous work.
+For efficiency, Gemini is more efficient than Genius in terms
+of both embedding generation time and training time. For embed-
+ding generation, Gemini is 2400× to 16000× faster than the Genius
+approach. For training time, training an effective Gemini model
+requires less than 30 minutes, while training Genius requires more
+than one week.
+In a broader scope, this work showcases a successful example
+of how to apply deep learning to solve important and emerging
+computer security problems and substantially improves over the
+state-of-the-art results.
+
+In the assembly clone search literature, there are four types of
+clones [6, 8, 28]: Type I: literally identical; Type II: syntactically
+equivalent; Type III: slightly modified; and Type IV: semantically
+equivalent. In this paper, we focus on the Type IV clones where
+assembly functions may appear syntactically different, but share the
+similar functional logic in their source code. We use the following
+notions: function denotes an assembly function; source function
+represents the original function written in source code, such as C++;
+repository function stands for the assembly function that is indexed
+inside the repository; and target function denotes the assembly
+function that is given as a query. Given an assembly function, our
+goal is to search its semantic clones inside the repository RP
+
+Moreover, Asm2Vec is more resilient to CFG graph manipula-
+tions than other graph-based manually crafted features
+
+\section{Outline}
+We summarize our contributions as follows:
+
+We propose the first neural network-based approach to generating embeddings for binary functions;
+
+We propose a novel approach to train the embedding network using a Siamese network so that a pre-trained model can generate embedding to be used for similarity detection;
+
+We propose a retraining approach so that the pre-trained
+model can take additional supervision to adapt to specific
+tasks
+
+We implement a prototype called Gemini. Our evaluation
+demonstrates that on a test set constructed from OpenSSL,
+Gemini can achieve a higher AUC than both Genius and
+other state-of-the-art graph matching-based approach;
+
+Our evaluation shows that Gemini can compute the em-
+bedding 3 to 4 orders of magnitude faster than prior art,
+i.e., Genius;
+
+We conduct case studies using real-world firmware images.
+We show that using Gemini we can find significantly more
+vulnerable firmware images than Genius.
+
+
+The rest of the thesis is organized as follows. Chapter 2 gives descriptions
+and short introductions to several different theories and methods that is used
+and discussed throughout the thesis. Chapter 3 contains different approaches
+and an overview of tools that could be used for the static analysis required by
+this project. Chapter 4 gives a brief but complete description of the system
+that was developed in order to generate dynamic control-dependence graphs.
+Chapter 5 presents both quantitative and qualitative results obtained during
+the evaluation of the system developed and the analysis of the problem as a
+whole. Finally, Chapter 6 presents conclusions regarding control flow analysis
+of unmodified x86 binary files together with suggestions for future work.

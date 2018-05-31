@@ -1,0 +1,14 @@
+[main]
+.\thesis.tex
+
+[texfiles]
+.\abstract.tex
+.\introduction.tex
+.\macros.tex
+.\sequential.tex
+.\distributedcovering.tex
+.\distributedpacking.tex
+.\conclusions.tex
+.\appendix.tex
+.\original_pubs.tex
+
