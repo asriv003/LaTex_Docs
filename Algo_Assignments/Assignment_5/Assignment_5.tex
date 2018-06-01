@@ -1,0 +1,177 @@
+% homework template
+\documentclass[a4paper,11pt]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+	
+	\Large
+ 	\textbf{CS 218, Spring 2017}
+ 	\hfill
+ 	Homework 5
+ 	\par
+ 	
+	\Large
+	Abhishek Kumar SRIVASTAVA
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\par
+ 	
+ 	%plagiarism statement
+ 	\begin{center}
+
+ 	\vspace{.2in}
+ 	
+ 	\textit{I certify that this submission represents my own original work }
+ 	\par
+	\vspace{.2in}
+	\makebox[2.4in]{\hrulefill}
+	\par
+
+ 	\end{center}
+ 	
+ 	\hrulefill
+ 	\par \vspace{2ex}
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textbf{CS 218:} Homework 5}
+\fancyhead[RE,LO]{Abhishek Kumar Srivastava}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+%some custom commands, taken from stanford template
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\begin{solution}1
+	\textbf{Algorithm}:\\
+	
+	Given: list of $n$ jobs $j_1, j_2, \dots, j_n$ each with a
+	time $t(j)$ to perform a job and a weight $w(j)$.\\
+	
+	Order jobs to minimize: \[
+	\sum_{i=1}^{n} \left( w(j_{\sigma(i)})  \sum_{k=1}^{i} t(j_{\sigma(k)}) \right)
+	\]
+	To get the efficient greedy algorithm choose the highest weight-time ratio first strategy. First, calculate the $\frac{w(i)}{t(i)}$ ratio for each job and sort them in decreasing order. Pick the first element with the highest weight-to-time ratio and it can be obtained by calling $\sigma(1)$ which should return the corresponding index of the job and keep picking next item in the order given by $\sigma(i)$ function where $i = 2,3 \dots ,n$. This should give the minimum weighted sum of the time each job has to wait before being executed.
+	
+		\begin{algorithm}
+			\begin{algorithmic}
+				\Function{MinWeightedTimeSum}{$weight\_array, time\_array$} \Comment{index $i$ = $i^{th}$ job}
+				\State{weight\_to\_time\_array = []}
+				\For{$i$ = $1$ to $n$} \Comment{Calculating Weight to Time Ratio}
+				\State{weight\_to\_time\_array[i] = weight\_array[i]/time\_array[i]}
+				\EndFor
+				\State{Sort(weight\_to\_time\_array)} \Comment{Sorting in decreasing order}
+				\For{$i$ = $1$ to $n$} \Comment{Picking Order}
+				\State{Pick $w(\sigma(i))$ \& $t(\sigma(i))$} \Comment{$\sigma(i)$ will return corresponding index }\\ \Comment{to element in weight-to-time ratio.}
+				\EndFor
+				\EndFunction	
+			\end{algorithmic} 	
+		\end{algorithm}
+	  \textbf{Time Complexity:}\\
+	  
+	  1. Sorting the weight-to-time ratio array will take $O(nlog n)$.\\
+	  
+	  2. Selecting one-element at a time will give the time complexity of $O(n)$ assuming that $\sigma(i)$ returns the index in $O(1)$ which can easily done by using appropriate data structure such as hash.\\
+	  \begin{equation*}
+	  T(n) = O(n log n) + O(n)
+	  \end{equation*}
+	  \begin{equation*}
+	  \therefore T(n) = O(n log n)
+	  \end{equation*}
+	  \newpage
+	  \textbf{Optimality:} We need to prove two property to proves the optimality of the algorithm suggested.\\
+	  
+	  1. Greedy Choice Property: In this property we have to prove that local optimal choice will lead to the globally optimal choice as well.\\
+	  
+	  Let $j_i$ the element with highest weight-to-time ratio. Assuming there is an element $j_k$ when picked first gives the minimum weighted time sum, but since $j_i$ will be picked sometime after the $j_k$ and being the highest weight-to-time ratio it will add more weighted time to the whole sum than it is being reduced by picking $j_k$ as the first element which contradicts the assumption that picking $j_i$ leads to min weight time sum. Therefore picking greedily the element with highest weight-to-time ratio each time will lead to the global optimal solution.\\
+	  
+	  2. Optimal Substructure Property: In this property we need to prove that problem can be divided in optimal subproblems.\\
+	  
+	  Once the greedy choice of the first job is made, the problem then reduces to finding optimal order of job which minimize the weighted time sum of the jobs which are now not selected.\\
+	  
+	  If $S$ set of selected jobs is optimal to $J$ set of all the jobs, then $S'$ is optimal to $J' = J-S$.
+	  
+\end{solution}
+\begin{solution}2
+	Consider edges in order of decreasing weight (breaking ties arbitrarily). When considering an edge	$e$, delete $e$ from $E$ unless doing so would disconnect the current graph.
+	The above described algorithm is:
+	
+	\begin{algorithm}
+		\begin{algorithmic}
+			\Function{ReverseDelete}{G,w}
+			\State A $\gets$ E \Comment A is get of All the edges
+			\State O $\gets$ Sorted(A)  \Comment O is set of ordered weights in decreasing order
+			\While {O is not empty}
+			\State $e$ = O.top() \Comment picks edge with highest weight and removed from set O
+			\If{removing $e$ will not create disjoint sets}
+			\State A $\gets$ A - $e$
+			\EndIf
+			\EndWhile
+			\EndFunction \\ 	
+		\end{algorithmic} 	
+	\end{algorithm}
+\textbf{Time Complexity:}\\
+1. Sorting all the edges of set A will take $O(E log E)$ time complexity.\\
+2. Checking whether the graph is disjoint or not can be done by using BFS and DFS which have time complexity of $O(V + E)$.\\
+3. We are checking whether the graph is disjoint or not assuming $e$ is deleted which is $O(E)$.\\
+
+Thus, Total time complexity will be,
+\begin{equation*}
+T(n) = O(E\cdot log E) + O(E\cdot(V+E))
+\end{equation*}
+\begin{equation*}
+ \boxed{\therefore T(n) = O(E \cdot (V+E))}
+\end{equation*}\\
+
+\textbf{Optimality:}\\
+1. Greedy Choice: If $M$ is MST($V$), by removing the largest weight between any two vertices maintains the property of light edge crossing $i.e$ minimum weight between an edge crossing cut. If we remove a edge with less weight between two vertices while not creating disjoint set then it does not give the minimum spanning tree. That's why removing weights which does not lead to disjoint graph is a good greedy choice.\\
+2. Optimal Substructure: One the chosen edge is removed from a set then the subproblem becomes to find the optimal MST for the remaining edges. 
+\end{solution} 
+\begin{solution}3
+	Dijkstra algorithm for the directed graph the algorithm will be the same as for undirected graph, the only thing which will change is because of the condition $w :	E \rightarrow \{ 0, 1, \dots, W \}$ to handle this we could use binary heap as our priority queue which stores all the vertices with distance d at a single node. 
+	
+	Building such heap for all vertices $(n)$ with maximum of $W+1$ nodes which is all possible weights of the edges. It will takes ${O(n\cdot logW)}$ time to construct the binary heap.Initially the priority queue (binary heap) will have maximum of $W+1$ nodes. 
+	
+	During edge relaxation, every time we add a node u to the cloud with of the weight value d, the priority queue (binary heap) will be left with maximum of $W+1$ distinct values in the range $d, d+1, ......, d+W$. As we know from the Dijkstra algorithm edge relaxation takes ${O(deg(V)\cdot logW)}$ time which is equivalent to ${m\cdot logW)}$ since sum of all the degree is equivalent to edges. Therefore the total time complexity of the Dijkstra\textsc{\char13}s algorithm in this scenario will be 
+	\begin{align*}
+	\boxed{{T(n) = O((n+m)\cdot logW)}}
+	\end{align*}
+\end{solution}
+
+\end{document}

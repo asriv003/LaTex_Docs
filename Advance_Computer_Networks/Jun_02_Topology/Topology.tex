@@ -1,0 +1,77 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	On Power-Law Relationships of the Internet Topology\\	
+ 	\normalsize Michalis Faloutsos, Petros Faloutsos, and Christos Faloutsos
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+
+In this paper Authors presented three power laws related to the topology of the internet. The power laws presented describe skewed distribution of graph properties in the internet. These power laws do hold up for their experiments on three snapshots of the internet during November 1997 \& December 1998 even though the internet is dynamic and ever growing. Authors claim that even this experiment was done considering 1998 topology it can easily be extended for topology in the future. 
+
+The Authors described the benifits  of these power laws in understanding the topology of the internet. Efficient protocols can be designed using topological properties, More accurate models can be designed for simulations and estimates for topological parameters can be derived for speculating future extension. Authors also describes the previous works done in modeling the internet such as \emph{Metrics}, \emph{Real network studies}, \emph{Generating Internet Models}, \emph{Power-laws in communication networks}.\\
+
+Three power laws given by Authors are:
+\begin{itemize}
+	\item Rank exponent: \emph{The outdegree, $d_v$, of a node v, is proportional to the rank of the node, $r_v$, to the power of a constant, R: $d_v \propto r^{R}_v$ }
+	\item Outdegree exponent: \emph{The frequency, $f_d$, of an outdegree, d, is proportional to the outdegree to the power of a constant, O: $f_d \propto d^O$}
+	\item Hop-plot exponent: \emph{Total number of pairs of nodes, P(h), within h hops, is proportional to the number of hops to the power of a constant, H: $P(h) \propto h^H,~h<< \delta $}
+\end{itemize}
+In this paper multiple other definition and lemma and their proofs are presented. The authors also explained for each power law that why these are the good metrics for measuring the topology. Multiple graphs are plotted using the power laws given with respect to the actual data and it was shown that there is definitely correlation between the network topology and the power laws given.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item Paper was much more theoretical oriented but had a very practical implication. It gave insights on how network as a graph and its properties can be used to define topology of internet. But even though they related it to the data was collected i still think it was a very small portion of data sampled with respect to the whole internet, also new kind of services are getting introduced and how this affect the network topology is hard to understand or will these power laws still hold if that is the case. 
+\end{itemize}
+
+\end{document}

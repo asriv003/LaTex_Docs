@@ -1,0 +1,74 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Improving Fairness, Efficiency, and Stability in
+ 	HTTP-based Adaptive Video Streaming with FESTIVE\\	
+ 	\normalsize Junchen Jiang, Vyas Sekar and Hui Zhang
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+
+This paper motivation was to solve the problem of concurrent use of multiple adaptive bitrate video players. Video traffic is very dominant in current internet era and HTTP-based adaptive streaming protocol i.e adaptive bitrate video players seems a better option to solve the problem of network bandwidth availability with respect to customized connection-oriented video transport protocols.
+
+Adaptive bitrate video players adjust as the name says adjust their bitrate depending on the network bandwidth. Which purpose was to improve the performance of video applications. But this solution did not consider the interactions between multiple adaptive streaming players and how they will affect the performance of each other. Authors considers 3 goals for better streaming players: Fairness, Efficiency and Stability. They studied multiple present day streaming players and their shortcomings and also proposed an abstract video player design with key component such as randomized chunk scheduling for avoiding network synchronization biases, stateful bitrate selection which uses interaction between bitrate and estimated bandwidth to make further judgment, delayed update to tradeoff between stability and efficiency and bandwidth estimator using harmonic mean of download speed of recent chunks.  
+
+They called their designed algorithm ``FESTIVE'' algorithm. Which was implemented using open source media framework and evaluated against current video streaming players. All players were evaluated under these parameters fairness, stability and efficiency. "Festive" player was able to show that is 40\% better in fairness, 50\% more stable and 10\% more stable. Also it is robust to the main problem of sharing bottleneck with multiple other players, increase in bandwidth variability and available set of bitrates.   
+.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item This Paper covered very important aspect of internet today which is video streaming since it is very large part of nowadays internet traffic. But i thought this problem was much more oriented toward solving the problem at the client end.
+	\item I also liked the end of the discussion part where they considered many other aspect of their design such as using ``Heterogeneous Algorihtm'', impact on non-streaming/non-video traffic and other wide area effects.  
+\end{itemize}
+
+\end{document}

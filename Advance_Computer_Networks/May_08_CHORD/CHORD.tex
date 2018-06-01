@@ -1,0 +1,74 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Chord: A Scalable Peer-to-peer Lookup Protocol
+ 	for Internet Applications\\	
+ 	\normalsize Ion Stoica, Robert Morris, David Liben-Nowell, David R. Karger, M. Frans Kaashoek, Frank Dabek and Hari Balakrishnan
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+
+This paper implemented a scalable peer-to-peer efficient lookup algorithm which overcomes the existing lookup problems. The \emph{Chord} protocol works by providing it a key and it maps the key to a particular node. The node mapped may store value which is associated by the given key. \emph{Chord} protocol uses consistent hashing to assign keys to the available nodes. The reason for using consistent hashing is it balances load by assigning each node almost equivalent amount of keys and also it is robust to the nodes leaving and joining the system. \emph{Chord} extended the shortcoming of consistent hashing by using ``routing'' information of few other nodes. In \emph{Chord} protocol participating nodes communicate with each other nodes while performing lookup. Therefore in N-node system all lookups are resolved in $O(log N)$  and each node maintains information of about $O(log N)$ other nodes. \emph{Chord} performance gets degraded by state routing information because nodes join and leave in arbitrary fashion.
+
+The paper also discusses multiple other  peer-to-peer systems and compares them how they are different to \emph{Chord} protocols. Few systems they compared were $Freenet$, $Ohaha$ $Systems$, $Globe$ $Systems$, $Plaxton$ $Protocol$, $CAN$, $GLS$, $Napster$ and $Gnutella$.
+
+The design principle for \emph{Chord} protocol was to solve the problem such as: \textbf{Load balance} by spreading keys evenly over all the nodes, \textbf{Decentralization} by making it distributed, \textbf{Scalability} by making it feasible for very large systems as well, \textbf{Availability} by adjusting internal tables so that it can be robust to the node failures and \textbf{Flexible naming} by putting no constraints on structure of the keys for look up. \emph{Chord} behaves like a library which provide functionality like lookup function which takes input a key and return an IP address for the node mapped to that key and notifying application changes in the keys which it is responsible for. Application using \emph{Chord} also provide authentication, caching, replication and renaming of data. \emph{Chord} provide good foundation for the application such as: cooperative mirroring, time-shared storage, distributed indexes and large-scale combinatorial search. \emph{Chord} protocol Specifies how to find the locations of keys, How new nodes join the system and How to recover from the failure or planned departure of existing nodes.
+
+.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item This Paper improved on lot of problem by peer-to-peer systems by proving lookups in $O(log N)$ nand robust to node failures. The part which i thought is pretty good is \emph{Chord} protocol can be extended to File system and also can be used as DNS lookup.  
+\end{itemize}
+
+\end{document}

@@ -1,4 +1,5 @@
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Different assembly functions compiled from the same \textit {gmpz\_tdiv\_r\_2exp} function of \textit {Libgmp}. From left to right, the assembly functions are compiled with the \textit {GCC O0} option, \textit {GCC O3} option, \textit {Obfuscator-LLVM} Control Flow Graph Flattening option and Bogus Control Flow Graph option.}}{3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

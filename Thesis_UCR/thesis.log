@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  30 MAY 2018 22:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.5.30)  1 JUN 2018 06:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **thesis.tex
 (./thesis.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
 (./ucr.cls (/usr/share/texlive/texmf-dist/tex/latex/anysize/anysize.sty
 Package: anysize 1994/08/13 setting margin sizes
 
@@ -78,10 +78,9 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen114
 \Gin@req@width=\dimen115
 )
-(/usr/share/texlive/texmf-dist/tex/latex/pdfsync/pdfsync.sty
+(./pdfsync.sty
 Package: pdfsync 2008/01/26 v1.1
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/03/03 v2.15a AMS math features
 \@mathmargin=\skip41
 
@@ -138,8 +137,12 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2735.
 LaTeX Info: Redefining \] on input line 2736.
+) (./fncylab.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+\epsfxsize=\dimen125
+\epsfysize=\dimen126
 )
-(/usr/share/texlive/texmf-dist/tex/latex/fncylab/fncylab.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
 
@@ -153,7 +156,7 @@ Package color Info: Driver file: pdftex.def on input line 143.
 Document Class: ucr 2006/04/30 v3.2.1 University of California Riverside Thesis
  Class
 (./uct11.clo)
-\descriptionmargin=\dimen125
+\descriptionmargin=\dimen127
 \c@part=\count96
 \c@chapter=\count97
 \c@section=\count98
@@ -221,13 +224,13 @@ LaTeX Font Info:    ... okay on input line 30.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count105
-\scratchdimen=\dimen126
+\scratchdimen=\dimen128
 \scratchbox=\box28
 \nofMPsegments=\count106
 \nofMParguments=\count107
 \everyMPshowfont=\toks21
 \MPscratchCnt=\count108
-\MPscratchDim=\dimen127
+\MPscratchDim=\dimen129
 \MPnumerator=\count109
 \makeMPintoPDFobject=\count110
 \everyMPtoPDFconversion=\toks22
@@ -321,81 +324,71 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--48
 Chapter 1.
 [1
 
+] [2] <diff_cfgs.png, id=45, 1667.22874pt x 676.5275pt>
+File: diff_cfgs.png Graphic file (type png)
+ <use diff_cfgs.png>
+Package pdftex.def Info: diff_cfgs.png used on input line 20.
+(pdftex.def)             Requested size: 469.74644pt x 198.73772pt.
+
+Overfull \hbox (36.12645pt too wide) in paragraph at lines 20--21
+ [][][][] 
+ []
+
+[3 <./diff_cfgs.png>] [4] [5] [6] [7]) (./chapter2.tex [8]
+Chapter 2.
+[9
+
 ]
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
+ [10] [11] [12] [13]
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
- [2]
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
- [3] [4] [5] [6] [7] [8]
-Missing character: There is no √ in font cmr10!
-Missing character: There is no ó in font cmr10!
-Missing character: There is no √ in font cmr10!
-Missing character: There is no ó in font cmr10!
- [9] [10] [11]) (./chapter2.tex [12]
-Chapter 2.
-[13
-
-] [14]
+ [14]
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
- [15] [16] [17]
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ì in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ì in font cmr10!
- [18]
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ô in font cmr10!
- [19] [20]
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ô in font cmr10!
- [21] [22] [23] [24] [25] [26])
-(./chapter3.tex [27]
+ [15] [16] [17] [18] [19] [20]) (./chapter3.tex
+[21] [22]
 Chapter 3.
-) (./chapter4.tex [28
+) (./chapter4.tex [23
 
 ]
 Chapter 4.
-) (./conclusions.tex [29
+) (./conclusions.tex [24
 
 ]
 Chapter 5.
-) (./thesis.bbl [30
+) (./thesis.bbl [25
 
-]) (./appendix.tex) [31
+] [26
 
-] (./thesis.aux) ) 
+]
+Missing character: There is no √ in font cmr10!
+Missing character: There is no © in font cmr10!
+) (./appendix.tex) [27] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 2892 strings out of 493029
- 39440 string characters out of 6136234
- 114600 words of memory out of 5000000
- 6357 multiletter control sequences out of 15000+600000
+ 2952 strings out of 494953
+ 39869 string characters out of 6180977
+ 109300 words of memory out of 5000000
+ 6163 multiletter control sequences out of 15000+600000
  10968 words of font info for 39 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 38i,16n,23p,1653b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (41 pages, 136713 bytes).
+ 14 hyphenation exceptions out of 8191
+ 38i,18n,23p,1653b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on thesis.pdf (37 pages, 337342 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 159 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

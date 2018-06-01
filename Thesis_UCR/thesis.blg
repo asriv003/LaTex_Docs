@@ -3,44 +3,56 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 The style file: plain.bst
 Database file #1: bibfile.bib
-You've used 3 entries,
+I was expecting a `,' or a `}'---line 94 of file bibfile.bib
+ :  
+ :  title =  {Graph-based comparison of executable objects},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty publisher in Aho
+Warning--empty journal in Chandramohan
+Warning--empty title in Dullien
+Warning--empty journal in Dullien
+Warning--empty year in Dullien
+Warning--empty journal in Kargen
+You've used 26 entries,
             2118 wiz_defined-function locations,
-            515 strings with 4444 characters,
-and the built_in function-call counts, 895 in all, are:
-= -- 79
-> -- 64
+            635 strings with 7557 characters,
+and the built_in function-call counts, 7303 in all, are:
+= -- 654
+> -- 505
 < -- 0
-+ -- 25
-- -- 22
-* -- 61
-:= -- 174
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 20
++ -- 199
+- -- 172
+* -- 475
+:= -- 1376
+add.period$ -- 76
+call.type$ -- 26
+change.case$ -- 162
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 30
-empty$ -- 52
-format.name$ -- 22
-if$ -- 170
+cite$ -- 32
+duplicate$ -- 262
+empty$ -- 448
+format.name$ -- 172
+if$ -- 1410
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 3
-newline$ -- 18
-num.names$ -- 6
-pop$ -- 20
+int.to.str$ -- 26
+missing$ -- 27
+newline$ -- 131
+num.names$ -- 52
+pop$ -- 179
 preamble$ -- 1
-purify$ -- 17
+purify$ -- 138
 quote$ -- 0
-skip$ -- 21
+skip$ -- 184
 stack$ -- 0
-substring$ -- 15
-swap$ -- 3
+substring$ -- 131
+swap$ -- 23
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
-warning$ -- 0
-while$ -- 6
-width$ -- 4
-write$ -- 32
+type$ -- 102
+warning$ -- 6
+while$ -- 52
+width$ -- 28
+write$ -- 254
+(There was 1 error message)

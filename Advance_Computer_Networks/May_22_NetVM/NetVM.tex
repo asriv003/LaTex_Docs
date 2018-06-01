@@ -1,0 +1,72 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	NetVM: High Performance and Flexible Networking
+ 	using Virtualization on Commodity Platforms\\	
+ 	\normalsize Jinho Hwang, K. K. Ramakrishnan and Timothy Wood
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+
+This paper presents NetVM which is a virtualization of Network to provide very high bandwidth network functionality to all of the VMs connected through it and only using low cost commodity servers instead of purpose built proprietary hardwares like PacketShader and NetMap. According to the authors NetVM is also dynamically scalable, deployable and reprogramable network functions as well. In the paper NetVM makes innovations such as virtualization based platform for flexible network service deployment, shared memory framework to provide zero-copy delivery to VMs and between VMs, hypervisor based switch which does intelligent load balancing through deep packet inspection, architecture to support high speed communication and complex networking services between multiple VMs and security domains to restrict packet data access to only trusted VMs.
+
+Authors discussed \textbf{Highspeed COTS Networking} and presented its shortcomings which NetVM is actually trying to overcome. First challenges is interrupt handling of network packets arriving at unpredictable times through long pipelines, out-of-order and multi level memory systems. When packet reception increases throughput will decrease because of this problem. Second issue being overhead in copying incoming data packets between user and kernel space. DPDK architecture solves these problems in small amount by directly allowing user space application to poll NIC for data. But DPDK fails to provide complete framework for interconnected complex network services $i.e$ multiple VMs. 
+
+NetVM solves multiple system design challenges mentioned above present in DPDK and COTS systems. These are done by \textbf{Zero-Copy Packet Delivery} which is done by sharing memory region between VMs from where applications can directly read and write data packets, \textbf{Lockless Design} for shared memory by using parallelized queues with dedicated cores which eliminated locking overhead, \textbf{NUMA-Aware Design} to reduce the memory access time which depends on the memory locations and done by allocating and using huge pages in NUMA aware fashion, \textbf{Huge Page Virtual Address Mapping} which was needed for zero copy design and allocation of pages done in contiguous regions in NUMA fashion and \textbf{Trusted and Untrusted VMs} for security purposes so that VMs donot access the data packets which are not relevant to them which is done by giving access to range of memory to a VM when created. These design helps in the implementation of NetVM and helps overcome challenges to provide high speed network virtualization.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item This Paper presented results which definitely showed some improvement over DPDK but the particularly i found impressive one with the number of chained VMs which NetVM was actually trying to improve but the improvement was quite relevant even without using specialized hardwares. I thought some more results also could have been added like performance comparison with actual data-center.    
+\end{itemize}
+
+\end{document}

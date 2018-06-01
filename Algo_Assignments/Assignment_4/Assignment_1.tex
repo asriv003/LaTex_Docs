@@ -1,0 +1,220 @@
+% homework template
+\documentclass[a4paper,11pt]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+	
+	\Large
+ 	\textbf{CS 218, Spring 2017}
+ 	\hfill
+ 	Homework 4
+ 	\par
+ 	
+	\Large
+	Abhishek Kumar SRIVASTAVA
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\par
+ 	
+ 	%plagiarism statement
+ 	\begin{center}
+
+ 	\vspace{.2in}
+ 	
+ 	\textit{I certify that this submission represents my own original work }
+ 	\par
+	\vspace{.2in}
+	\makebox[2.4in]{\hrulefill}
+	\par
+
+ 	\end{center}
+ 	
+ 	\hrulefill
+ 	\par \vspace{2ex}
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textbf{CS 218:} Homework 4}
+\fancyhead[RE,LO]{Abhishek Kumar Srivastava}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+%some custom commands, taken from stanford template
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\begin{solution}1	
+	\textbf{Part a:} When input elements are divided in group by 7.\\
+	
+	Using the same example as given in the class we can observe that for the $median$ of $medians$ at least $n/7$ groups contribute four elements that are bigger than $median$, except for the last group with less than 7 elements and the group with $median$ itself.\\
+	
+	
+	From the above observation we conclude that there are at least this amount of elements are greater than the $median$:
+	
+	\begin{equation*}
+	4([1/2 [n/7]] - 2) \ge (2n/7) - 8
+	\end{equation*}
+	So the worst case split can has $5n/7 + 8$.
+	\begin{equation*}
+	\max\{|L|,|R|\} < (5n/7)+8
+	\end{equation*}
+	Therefore recurrence relation is:
+	\begin{align*}
+	T(n) &= T([n/7]) + T(5n/7 + 8) + O(n)\\
+	&\le c((n/7)+1) + 5cn/7 + 8c + O(n)\\
+	&= cn - [c((n/7)-9) - dn]\\
+	&\le cn
+	\end{align*}
+	The last step hold since $n\ge70$ $\implies$ $n/7 - 9$ is positive. Choosing $c$ big enough will result $c((n/7)-9) - dn$ positive and last line holds. Therefore,
+	\begin{equation*}
+	\boxed{T(n) = O(n)}
+	\end{equation*}
+	\textbf{Part b:} Using group of 3  we can see that at least $n/3$ groups contribute two elements that are bigger than $median$. Therefore,
+	\begin{equation*}
+	2([1/2 [n/3]] - 2) \ge (n/3) - 4
+	\end{equation*}
+	 So the worst case split can has $2n/3 + 4$ and it will result into following recurrence relation.
+	 \begin{align*}
+	 T(n) &= T([n/3]) + T(2n/3 + 4) + O(n)\\
+	 &\le c((n/3)+1) + 2cn/3 + 4c + O(n)\\
+	 &= cn - [-5c -dn]\\
+	 &\ge cn
+	 \end{align*}
+	 Last line is true because for $n\ge 0$ and $-5c -dn$ is negative. Therefore,
+	 \begin{equation*}
+	 \boxed{T(n) \ne O(n)}
+	 \end{equation*}  
+\end{solution}
+
+\newpage
+\begin{solution}2
+	\textbf{Given: } For $n$ distinct integer $x_1, x_2, \dots x_n$ with positive weights
+	$w_1, w_2, \dots, w_n$ such that $\sum_{i=1}^n w_i = 1$, the weighted
+	median is the element $x_k$ satisfying 
+	\[
+	\sum_{i: x_i < x_k} w_i < 1/2 \quad \mbox{and} \quad \sum_{i: x_i > x_k} w_i \leq 1/2
+	\]
+	To find the weighted median first find the median of $x_1, x_2, \dots x_n$ by using linear selection algorithm and picking the element of rank $n/2$ $i.e$ median. Maintain two arrays named left and right subarray. Traverse the whole array comparing each element with median if it is small then insert in the left subarray and add the corresponding weight otherwise it is inserted in the right subarray. After whole array traversal we check that if the left subarray sum is greater or less than 1/2. If is greater we do recursive operation on the left subarray since weighted median lies in the left subarray, otherwise we will do recursive operation on the right subarray to find weighted median.
+	
+	The recurrence relation for the above described algorithm is:
+	\begin{equation*}
+	T(n) = T(n/2) + O(n)
+	\end{equation*} 
+	$T(n/2)$ because we will only traverse either left or right subarray. $O(n)$ because we are traversing whole array for comparing all the elements with the median found and we are finding median of the array using linear selection. By using master theorem case:3 we can get the asymptotic time as $T(n) = O(n)$.\\
+	
+	\begin{algorithm}
+		\begin{algorithmic}
+			\Function{WeightedMedian}{array, sum}
+			\State len = length(array)
+			\If{$len==1$}
+			\Comment Base Condition
+			\State return array[0]
+			\EndIf
+			\State median = Linear\_Selection(array,len/2) \Comment{rank = len/2}
+			\State leftSubArray;
+			\State rightSubArray;
+			\State leftSum = 0;
+			\For {$i \gets 0$ to $length-1$}
+			\If {array[i] $<$ median}
+			\State insert(leftSubArray,array[i]);\Comment{insert element in array given}
+			\State leftSum += weight[i];\Comment{adding corresponding weight}
+			\Else
+			\State insert(rightSubArray,array[i]);\Comment{insert element in array given}
+			\EndIf
+			\EndFor
+			\If {sum+leftSum $> 1/2$}
+			\State \Call {WeightedMedian}{leftSubArray, sum};
+			\Else
+			\State \Call {WeightedMedian}{rightSubArray,leftSum}
+			\EndIf
+			\EndFunction \\ 	
+		\end{algorithmic} 	
+	\end{algorithm}
+
+\end{solution} 
+
+\newpage
+\begin{solution}3
+	\textbf{Given:} $t$ and $p$ strings over an alphabet $\Sigma$ of size
+	$\sigma$.
+	We have to find For each $\gamma \in \Sigma$, calculate $C_{\gamma}(i) =
+	\sum_{k=0}^{n-1} equal_{\gamma}(a_{i+k},b_k)$ for $i \in \{ 0, 1,
+	\dots, n \}$, where $equal_{\gamma}(\alpha,\beta)$ is 1 if
+	$\alpha=\beta=\gamma$, zero otherwise.\\
+	
+	Doing this in a naive way will give us $O(n^2)$. Using FFT we can get $O(nlogn)$ but for using convolution we have to first transform our input string into something different for both input array and pattern array.
+	
+	For a $\gamma \in \Sigma$ we will transform the string array $t$ and $p$ into $t_{\gamma}$ and $p_{\gamma}$. Transformation will be done by traversing $t$ and $p$ and setting 1 if $t[i]$ and $p[i]$ matches with $\gamma$ otherwise 0. It will be transform into the array of 0's and 1's. And just like polynomial multiplication we can apply FFT on $t_{\gamma}$ and $p_{\gamma}$ which will give back $C_{\gamma}$. If the length of $t$ and $p$ is different we can add 0 in the end to do padding and making them of equal length and ignoring the coefficients of the padded elements.The length of the convolution will be $len(t)+len(p)-1$.  I am treating FFT as blackbox for which i will give input and i will get the corresponding result.
+	
+	Given length of array is $n$ and $\sigma$ we will get the following complexity for the above described algorithm:
+	For a single character,
+	\begin{equation*}
+	T(n) = O(n) + O(nlogn)
+	\end{equation*}
+	$O(n)$ because we are transforming the string array by traversing it and setting 1's and 0's. $O(nlogn)$ because we are using convolution to computer $C_{\gamma}$.
+	For $\sigma$ number of characters.
+	\begin{align}
+	T(n) = \sigma \cdot (O(n) + O(nlogn))
+	\end{align}
+	\begin{equation*}
+	\boxed{\therefore T(n) = O(\sigma nlogn)}
+	\end{equation*}
+	\begin{algorithm}
+		\begin{algorithmic}
+			\Function{Compute\_C\_gamma}{t, p, $\gamma$}
+			\State{t\_gamma = Transform(t,$\gamma$)}
+			\State{p\_gamma = Transform(p,$\gamma$)}
+			\State{C\_gamma = Convolution(t\_gamma,p\_gamma)}
+			\State{return C\_gamma}
+			\EndFunction\\
+			\Function{Transform}{array, $\gamma$}
+			\State{temp\_array(0 $\dots$ $length(array)-1$)}
+			\For{i $\gets$ 0 to $length(array)-1$ }
+			\If{array[i] == $\gamma$}
+			\State{temp\_array[i] = 1}
+			\Else
+			\State{temp\_array[i] = 0}
+			\EndIf
+			\EndFor
+			\State{return temp\_array}
+			\EndFunction	
+		\end{algorithmic} 	
+	\end{algorithm}
+\end{solution}
+
+\end{document}

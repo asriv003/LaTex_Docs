@@ -1,0 +1,72 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Dominant Resource Fairness: Fair Allocation of Multiple Resource Types\\	
+ 	\normalsize Ali Ghodsi, Matei Zaharia, Benjamin Hindman, Andy Konwinski, Scott Shenker and Ion Stoica
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+
+This paper presented a \emph{Dominant Resource Fairness(DRF)} which is a generalization of min-max fairness but solves the problem of allocating resources fairly of multiple types in a system to the users which may have varying demands for each resources. This problem is an extension of the problem that where most of the fair allocation methods always single resource type was considered which tends tasks to under-utilize or over-utilize their resources slots. DRF addresses this problem by devising fair allocation in multi-resource environment with heterogeneous demands. DRF is based on the principle that user's \emph{dominant share} should be used to allocating user for a resource. Dominant share is maximum share that has been allocated to the user of any resource type. Which helps DRF to maximize the minimum dominant share across all the users sharing multiple resources.
+
+DRF have multiple desirable properties to address the challenges of fair allocation for multiple resources and heterogeneous demands. \textbf{Sharing incentive} which is partitioning of resources are done statically and equally among all the users. \textbf{Strategy proof} where user should not be able to  be benifited by lying about their resource demands. \textbf{Pareto-efficient} where it is not possible to increase the allocation of a user without decreasing allocation of at least other user. \textbf{Envy free} where a user should not prefer allocation of another user. Other properties are also nice-to-have such as \emph{Single resource fairness}, \emph{Bottlenect fairness}, \emph{Population monotonicity} and \emph{Resource monotonicity}.
+
+Paper also presents another version of DRF called \textbf{Weighted DRF} this is to allocate more resources to users running more important job. This is generalization of weighted max-min fairness. Other fair allocation policies were compared with DRF such as \emph{Asset Fairness}, \emph{Competitive Equilibrium from Equal Incomes}. With the experimental results it is shown that DRF dynamically adjust shares of the jobs with different resource demands.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item This Paper presented a fairly simple algorithm to understand but had a huge improvement as shown by the experimental results over existing fair allocation policies.
+	\item I don't know if it is relevant here or not, but can any deadlock situation for resource allocation happen by using this policy.   
+\end{itemize}
+
+\end{document}

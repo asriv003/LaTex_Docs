@@ -125,6 +125,7 @@
 % \usepackage{amsthm}
 % \usepackage{fancyhdr} 
 \usepackage{fncylab}
+\usepackage{epsfig}
 \usepackage[usenames]{color}
 % \usepackage{enumerate}
 % \usepackage{multirow}

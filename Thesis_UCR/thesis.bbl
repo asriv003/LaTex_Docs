@@ -1,4 +1,36 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{Agrawal}
+Hiralal Agrawal and Joseph~R. Horgan.
+\newblock Dynamic program slicing.
+\newblock {\em SIGPLAN}, 1990.
+
+\bibitem{Aho}
+Alfred~V. Aho, Ravi Sethi, and Jeffrey~D. Ullman.
+\newblock {\em Compilers: Principles, Techniques, and Tools}.
+\newblock 1986.
+
+\bibitem{Allen}
+Frances~E. Allen.
+\newblock Control flow analysis.
+\newblock {\em SIGPLAN Not.}, 1970.
+
+\bibitem{Bromley}
+Jane Bromley, Isabelle Guyon, Yann LeCun, Eduard S\"{a}ckinger, and Roopak
+  Shah.
+\newblock Signature verification using a "siamese" time delay neural network.
+\newblock {\em NIPS}, 1993.
+
+\bibitem{Chandramohan}
+Mahinthan Chandramohan, Yinxing Xue, Zhengzi Xu, Yang Liu, Chia~Yuan Cho, and
+  Hee Beng~Kuan Tan.
+\newblock Bingo: Cross-architecture cross-os binary search.
+\newblock 2016.
+
+\bibitem{Cifuentes}
+Cristina Cifuentes and K.~John Gough.
+\newblock Decompilation of binary programs.
+\newblock {\em Softw. Pract. Exper.}, 1995.
 
 \bibitem{Cui}
 Ang Cui, Michael Costello, and Salvatore~J Stolfo.
@@ -6,16 +38,111 @@ Ang Cui, Michael Costello, and Salvatore~J Stolfo.
   exploitation.
 \newblock {\em NDSS}, 2013.
 
+\bibitem{Cytron}
+Ron Cytron, Jeanne Ferrante, Barry~K. Rosen, Mark~N. Wegman, and F.~Kenneth
+  Zadeck.
+\newblock Efficiently computing static single assignment form and the control
+  dependence graph.
+\newblock {\em ACM Trans. Program. Lang. Syst.}, 1991.
+
+\bibitem{David}
+Yaniv David and Eran Yahav.
+\newblock Tracelet-based code search in executables.
+\newblock {\em SIGPLAN}, 2014.
+
+\bibitem{Ding}
+Steven~H.H. Ding, Benjamin~C.M. Fung, and Philippe Charland.
+\newblock Kam1n0: Mapreduce-based assembly clone search for reverse
+  engineering.
+\newblock {\em KDD}, 2016.
+
+\bibitem{Dullien}
+Thomas Dullien and Rolf Rolles.
+
+\bibitem{Eschweiler}
+Sebastian Eschweiler, Khaled Yakdan, and Elmar Gerhards-Padilla.
+\newblock discovre: Efficient cross-architecture identification of bugs in
+  binary code.
+\newblock {\em NDSS}, 2016.
+
+\bibitem{Farhadi}
+Mohammad~Reza Farhadi, Benjamin C.~M. Fung, Philippe Charland, and Mourad
+  Debbabi.
+\newblock Binclone: Detecting code clones in malware.
+\newblock {\em SERE '14}, 2014.
+
+\bibitem{Feng}
+Qian Feng, Rundong Zhou, Chengcheng Xu, Yao Cheng, Brian Testa, and Heng Yin.
+\newblock Scalable graph-based bug search for firmware images.
+\newblock {\em CCS}, 2016.
+
+\bibitem{Fer}
+Jeanne Ferrante, Karl~J. Ottenstein, and Joe~D. Warren.
+\newblock The program dependence graph and its use in optimization.
+\newblock {\em TOPLAS}, 1987.
+
 \bibitem{Jang}
 Jiyong Jang, David Brumley, and Shobha Venkataraman.
 \newblock Bitshred: Feature hashing malware for scalable triage and semantic
   analysis.
 \newblock {\em CCS}, 2011.
 
+\bibitem{Junod}
+Pascal Junod, Julien Rinaldini, Johan Wehrli, and Julie Michielin.
+\newblock Obfuscator-llvm: Software protection for the masses.
+\newblock {\em SPRO}, 2015.
+
+\bibitem{Kargen}
+Ulf Kargén and Nahid Shahmehri.
+\newblock Efficient utilization of secondary storage for scalable dynamic
+  slicing.
+\newblock 2014.
+
+\bibitem{Khoo}
+Wei~Ming Khoo.
+\newblock Decompilation as search.
+\newblock {\em University of Cambridge, Computer Laboratory, Technical Report},
+  2013.
+
+\bibitem{Kruegel}
+Christopher Kruegel, Engin Kirda, Darren Mutz, William Robertson, and Giovanni
+  Vigna.
+\newblock Polymorphic worm detection using structural information of
+  executables.
+\newblock {\em RAID}, 2006.
+
+\bibitem{LeCun}
+Yann LeCun, Yoshua Bengio, and Geoffrey Hinton.
+\newblock Deep learning.
+\newblock {\em Nature Publishing Group}, 2015.
+
+\bibitem{Linn}
+Cullen Linn and Saumya Debray.
+\newblock Obfuscation of executable code to improve resistance to static
+  disassembly.
+\newblock {\em CCS}, 2003.
+
+\bibitem{Pewny}
+Jannik Pewny, Behrad Garmany, Robert Gawlik, Christian Rossow, and Thorsten
+  Holz.
+\newblock Cross-architecture bug search in binary executables.
+\newblock {\em SP}, 2015.
+
+\bibitem{Andreas}
+Andreas S{\ae}bj{\o}rnsen.
+\newblock Detecting fine-grained similarity in binaries.
+\newblock {\em Ph.D Thesis}, 2014.
+
 \bibitem{Saeb}
 Andreas S{\ae}bj{\o}rnsen, Jeremiah Willcock, Thomas Panas, Daniel Quinlan, and
   Zhendong Su.
 \newblock Detecting code clones in binary executables.
 \newblock {\em ISSTA}, 2009.
+
+\bibitem{Xu}
+Xiaojun Xu, Chang Liu, Qian Feng, Le~Song, and Dawn Song.
+\newblock Neural network-based graph embedding for cross-platform binary code
+  similarity detection.
+\newblock {\em CCS}, 2017.
 
 \end{thebibliography}

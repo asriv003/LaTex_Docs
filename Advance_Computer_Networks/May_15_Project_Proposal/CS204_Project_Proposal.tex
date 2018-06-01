@@ -1,0 +1,102 @@
+% homework template
+\documentclass[a4paper,11pt]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+\usepackage{epsfig}
+\usepackage{float}
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+	
+	\Large
+ 	\textbf{CS 204, Spring 2017}
+ 	\hfill
+ 	Project Proposal
+ 	\par
+ 	
+	\Large
+	Abhishek Kumar SRIVASTAVA
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\par
+ 	
+ 	%plagiarism statement
+ 	%\begin{center}
+
+ 	%\vspace{.2in}
+ 	
+ 	%\textit{I certify that this submission represents my own original work }
+ 	%\par
+	%\vspace{.2in}
+	%\makebox[2.4in]{\hrulefill}
+	%\par
+
+ 	%\end{center}
+ 	
+ 	\hrulefill
+ 	\par \vspace{2ex}
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textbf{CS 204:} Project Proposal}
+\fancyhead[RE,LO]{Abhishek Kumar Srivastava}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+%some custom commands, taken from stanford template
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Objective:} The main motivation of my project is to do Network Anomaly detection using Co-clustering method. Using a data set and classify each connection as ``normal'' or ``attack'' connection.\\
+
+\textbf{Overview: } In this project I will apply the 2 different co-clustering algorithms(soft co-clustering and hard co-clustering) to cluster connections and mark which connection reading(connection feature) gives strong indication of the cluster being anomalous with other clusters.\\
+
+The reason for choosing co-clustering is because it can be good method for separating normal connections from anomalous ones. It is an attempt to isolate set of connections which stand out from the normal user behavior which is also called as ``Network Intrusion Detection''. Another reason for using co-clustering is in certain type of attacks they are correlated with only subset of connection parameters. We have to find subsets of parameters associated with set of connections that make such set anomalous in set of normal connections.\\
+
+Co-clustering is a technique in which given data matrix, we try to find subset of row that are correlated to subset of its columns. It is different from traditional clustering in the sense that in that rows have to be correlated across all the columns. Co-clustering is an unsupervised learning and using this method have benefit such as analysis will not rely on any particular labeling which can yield biased results therefore avoiding fine tuning the algorithm for a specific dataset, also co-clustering can help identify the  attacking connections which goes unnoticed.\\
+
+\textbf{Data description :} 
+The data set which i am using was used for The Third International Knowledge Discovery and Data Mining Tools Competition, which was held in conjunction with KDD-99.\\
+
+I use a labeled portion of the dataset, consisting of 494020 connections; 97277 out of them are `normal' and 396743 are `attacks'. There are 22 different types of attacks in the labeled data set. For each connection there are 37 recorded measurements(features). Few features were such as: `duration', `protocol\_type', `service', `flag', `src\_bytes', `dst\_bytes', `land', `wrong\_fragment', `urgent' and etc.\\
+
+\textbf{Evaluations:} Implementing the co-clustering techniques and use them to classify each connection between ``normal connection'' or ``bad connection''. Will apply other techniques to prove usefulness of co-clustering and find if any other classification methods works better.\\
+
+\textbf{References: } \\
+Network Anomaly Detection using Co-clustering. Evangelos E. Papalexakis, Alex Beutel, Peter Steenkiste, ASONAM'12\\
+MultiAspectForensics: Pattern Mining on Large-scale Heterogeneous Networks with Tensor Analysis. Koji Maruhashi, Fan Guo, Christos Faloutsos, ASONAM'11
+ 
+\end{document}

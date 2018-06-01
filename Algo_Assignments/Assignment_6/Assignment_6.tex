@@ -1,0 +1,186 @@
+% homework template
+\documentclass[a4paper,11pt]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+	
+	\Large
+ 	\textbf{CS 218, Spring 2017}
+ 	\hfill
+ 	Homework 6
+ 	\par
+ 	
+	\Large
+	Abhishek Kumar SRIVASTAVA
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\par
+ 	
+ 	%plagiarism statement
+ 	\begin{center}
+
+ 	\vspace{.2in}
+ 	
+ 	\textit{I certify that this submission represents my own original work }
+ 	\par
+	\vspace{.2in}
+	\makebox[2.4in]{\hrulefill}
+	\par
+
+ 	\end{center}
+ 	
+ 	\hrulefill
+ 	\par \vspace{2ex}
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textbf{CS 218:} Homework 6}
+\fancyhead[RE,LO]{Abhishek Kumar Srivastava}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+%some custom commands, taken from stanford template
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\begin{solution}1. \textbf{Given :} Set of $n$ objects and have $m$ sequence of operations to perform consists of \textsc{Make-set}, \textsc{Find-set} and \textsc{Link} operations. \textsc{Link} operation occurs before every \textsc{Find-set}.\\
+	
+From their algorithms we know that time complexity of \textsc{Make-set} is $O(1)$, time complexity of \textsc{Link} is also $O(1)$ and time complexity of \textsc{Find-set} is $O(h)$ where $h$ is height of node in the \textsc{Set} tree. But since we are using both path compression and union by rank heuristics, after first \textsc{Find-set} operation on a node, root node will become its parent and also of all the intermediate nodes which are in the path from searched node to the root node and thus further operations will be of $O(1)$ for all these nodes.\\
+
+Using accounting method for the amortized analysis the charging scheme will be:
+\begin{enumerate}
+	\item Charge \$2 for \textsc{Make-set} operation:
+	\begin{itemize}
+	\item Pay \$1 for performing \textsc{Make-set} operation for that node.
+	\item Reserve \$1 for that node. This will be used either when \textsc{Find-set} operation is performed on this node to change its parent from current node to the root node or if it is an intermediate node in the path when \textsc{Find-set} operation is performed on different node.   
+	\end{itemize}
+	\item Charge \$1 for \textsc{Link} operation. This will be paid for linking two different nodes using union by rank heuristics.
+	\item Charge \$1 for \textsc{Find-set} operation. This will be paid to return the root node of the \textsc{Set} tree when the node is at level 1. While traversing the path from node to the root node and changing its parent to root node will be paid using the reserve from \textsc{Make-set} operation and it will bring it to level 1. Thus credit invariant holds since credit never goes to negative.  
+\end{enumerate}
+
+So total number of operations performed are $m$ and lets assume $n$ \textsc{Make-set} operations are performed, $p$ \textsc{Link} operations are performed and $m-n-p$ \textsc{Find-set} operations are performed, thus total amount charged will be \$$2n$ + \$$p$ + \$$(m-n-p)$ = \$$m$ + \$$n$. So the time complexity will be T(n) = O(m) + O(n) but since m $>$ n. Thus,
+\begin{align*}
+\boxed{\mathbf{T(n) = O(m)}}
+\end{align*}
+
+Since above amortized analysis does not depend on the rank of nodes and how they are linked but is dependent upon path compression since we are able to bring the nodes at level 1 and don't have to pay again and again the \$$h$ amount each time. Thus the time complexity will be the same as above even if we do not perform union by rank heuristics and only use path compression heuristics. This time complexity will change in case if path compression heuristics is not used.  
+	
+\end{solution}
+\newpage
+\begin{solution}2 \textbf{Given :} Coins are minted with denominations of $\{d_1, . . . , d_k\}$ units and we have to devise algorithm to change $n$ units using minimum number of coins.\\
+
+		
+Consider the following pseudocode for the greedy algorithm. Sorting the list of denominations in decreasing order of its values since we want to minimize the number of coins so taking the coins of highest amount is a good greedy choice. Sorting the list will takes $\mathbf{O(k\cdot logk)}$ time assuming it has $k$ number of denominations. The loop is executed maximum of $k$ times each time doing constant number of computation $i.e$ dividing the amount by denomination value thus has time complexity of $\mathbf{O(n)}$. Therefore the time complexity for the greedy algorithm is:
+\begin{align}
+\boxed{\mathbf{T(n) = O(k~logk)}}
+\end{align} 
+\begin{algorithm}
+	\caption{}
+	\label{Algorithm}
+	\begin{algorithmic}
+		\Function{MinimumCoins}{Amount, Denominations[~]}
+		\State count = 0
+		\Comment Variable to store the final count of selected denominations
+		\State sort(Denominations[~])
+		\Comment Sorting Denominations in decreasing order
+		\State num = 0
+		\Comment Stores number of coins for respective denomination
+		\While {Amount $>$ 0}
+		\Comment Repeat till all amount is converted
+		\If {Denominations[i] $\le$ Amount}
+		\State num = Amount / Denominations[i]
+		\Comment Take floor value
+		\State count += num
+		\Comment Adding number of coins for each denomination
+		\State Amount = Amount - (num $\cdot$ Denominations[i])
+		\Comment Left Amount to be exchanged
+		\EndIf
+		\EndWhile\\
+		\Return count
+		\EndFunction	
+		\end{algorithmic} 	
+		\end{algorithm}
+
+		\textbf{Greedy choice property:}\\
+		The greedy choice in this problem is picking the denomination value with highest value. We can get the maximum number of coins which can be exchanged for this denomination by dividing the total amount by the denomination value. Since we are exchanging maximum number of coins for a denomination, the amount left to be exchange will be the remainder of amount which cannot be divided. And this can be repeated with the next highest denomination value.
+		
+		Let $d_1$ be the highest denomination value \& $d_2$ some other denomination value less than $d_1$. By our greedy property picking $d_1$ will give optimal solution. We have to show that by picking $d_2$ will not lead to the optimal solution which is least number of coins. Let $n$ be the amount to be exchanges and assuming using $d_1$ and $d_2$ we can exchange the $n$ amount.
+		The number of coins when $d_1$ is picked first and $d_2$ is picked will be $\floor*{\frac{n}{d_1}} + \floor*{\frac{n'}{d_2}}$. $n'$ is left amount $n - (\floor*{\frac{n}{d_1}}\cdot d_1)$ after $d_1$ is exchanged. When $d_2$ is picked first and $d_1$ is picked later the total number of coins will be $\floor*{\frac{n}{d_2}} + \floor*{\frac{n''}{d_1}}$. Since $n''$ will be less than $d_2$ value therefore $n''/d_1$ will give 0. If choosing $d_2$ leads to better result we have to prove that:
+		\begin{align*}
+		\floor*{\frac{n}{d_1}} + \floor*{\frac{n'}{d_2}} > \floor*{\frac{n}{d_2}}\\
+		%\text{substiting value of $n'$}\\
+		\floor*{\frac{n}{d_1}} + \floor*{\frac{n}{d_2}} - (\floor*{\frac{n}{d_1}} \cdot \frac{d_1}{d_2}) > \floor*{\frac{n}{d_2}}\\
+		\floor*{\frac{n}{d_1}} > \floor*{\frac{n}{d_1}} \cdot \frac{d_1}{d_2} \\
+		%1 > \frac{d_1}{d_2}\\
+		d_2 > d_1
+		\end{align*}
+		Which is contradiction to our assumption. That's why our greedy assumption is correct.\\
+		
+		\textbf{Optimal substructure property:}\\
+		We have proved that the optimal solution contains the greedy choice. Suppose $U$ is an optimal solution for the problem. $U^{'}$ be the solution for the subproblem formed after exclusion of the greedy choice. If $U^{'}$ is not optimal, then there exists some $U^{''}$ which is the optimal solution of the subproblem. In that case we can include the greedy choice in $U^{''}$ and form a better solution than $U$. But as $U$ is the optimal solution this is a contradiction. Therefore $U^{'}$ is optimal which proves the optimal substructure.\\\\
+		\textbf{2}. Lets say we were trying to find minimum  number of coins in the change for 12 (or any multiple of 6). The greedy algorithm would give us total of 3 coins (1 coin of 10 and 2 coins of 1). But the optimal solution has 2 coins of 6. Therefore  the greedy algorithm does not always give the minimum number of coins in a country whose denominations are $\{1, 6, 10\}$.\\\\
+		\textbf{3}. Consider the following pseudocode, where we A is the amount (in this problem $\mathbf{A = n}$) and D is array of denominations (\textbf{where length of D is k}). The outer loop runs $n$ times and during each of these iterations the inner loop runs k times. Therefore the running time of the algorithm can be given by
+		\begin{align*}
+		\boxed{\mathbf{T(n) = O(nk)}}
+		\end{align*}
+
+		\begin{algorithm}[h]
+			\caption{}
+			\label{Algorithm}
+			\begin{algorithmic}
+				\Function{MinimumNumberOfCoins}{A, D}
+				\State minimumCoin
+				\Comment Array of size n to store the solutions of sub-problems
+				\For a $\gets$ 1 to A
+				\State minimumCoin[a] $\gets \infty$
+				\For d in D
+				\If {d$<$a $\&\&$ minimumCoins[a-d] + 1 $<$ minimumCoins[a]}
+				\State minimumCoins[a] $\gets$ minimumCoins[a-d] + 1
+				\EndIf
+				\EndFor
+				\EndFor \\
+				\Return minimumCoins[A]
+				\EndFunction	
+				\end{algorithmic} 	
+				\end{algorithm}
+
+\end{solution} 
+
+\end{document}

@@ -1,0 +1,73 @@
+% Networks Summary template
+\documentclass[a4paper,12pt, twoside]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+
+
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+ 	\Large
+ 	\begin{center}
+ 	Fog Computing and Its Role in the Internet of Things\\	
+ 	\normalsize Flavio Bonomi, Rodolfo Milito, Jiang Zhu and Sateesh Addepalli
+ 	\end{center}
+ 
+ 	\Large
+	Abhishek Srivastava
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\hfill
+ 	\textbf{CS 204}, Spring 2017
+ 	\par 	
+ 	\hrulefill
+ 	\par
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\textbf{CS 236}}
+%\fancyhead[RE,LO]{Abhishek Srivastava}
+%\fancyfoot[CE,CO]{\leftmark}
+%\fancyfoot[LE,RO]{\thepage}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\textbf{Review:}\\
+
+This paper presents Fog Computing which tries to bridge the shortcomings of the Cloud computing while also opening new kind of applications and services. Cloud computing provide less hassle for web applications and batch processing by providing ``pay as you go'' model and free enterprises and end users from all specific details . But cloud computing suffers some problems as well, it is not good latency sensitive devices/applications because of lack of local nodes, it also have a shortcoming such as Client access links and security issues.  
+
+Fog Computing is a model in which data processing and applications are concentrated in the devices at the network edge rather than existing entirely in the cloud. It is a highly virtualized platform which provides compute, storage and networking services between end-users and cloud computing data centers. Fog overcomes the problem with the cloud computing and reduces the data movement across network resulting in reduced congestion, elimination of bottlenecks from centralized computing systems and improves the security as it is closer to the end users.
+
+Fog computing provides multiple characteristics such as, \textbf{Edge location}, \textbf{local awareness}, \textbf{low latency} which helps in supporting endpoints with rich services. \textbf{Geographical distribution} to meet the requirements of widely distributed networks by services and applications. \textbf{ Distributed Systems} by providing distributed computing and storage resources for example Large-scale sensor networks and Smart Grid. \textbf{Mobility} support which is essential for my of the fog applications to communicate with mobile devices and require distributed directory systems. \textbf{Real-time interactions} between applications and devices/data. \textbf{Heterogeneity} by being able to be deployed in  wide variety of environments. \textbf{Interoperability} by requiring support from different providers and across multiple domains. \textbf{Online analytic Support} among devices/services and data stored on the cloud.
+
+The paper also presents few areas where Fog computing can be useful. Few examples provided by the authors are: Connected Vehicle which needs rich connectivity, mobility, geo-distribution,local awareness, low latency, heterogeneity and real-time interactions which all are supported by the Fog computing. Wireless Sensors and Actuators Networks whose need for proximity and local awareness, geo-distribution and hierarchical organization makes Fog computing suitable for it. Smart Grid where it needs support such as distributed storage, interactions with the local devices and stored data which Fog computing is capable of providing.\\
+
+\textbf{Comments:}
+\begin{itemize}
+	\item This Paper tackle the networking issues for the upcoming technology $i.e$ IoT which may need different kind of service which cloud computing is unable to provide. The one thing which I think lacked from the paper was more detail about the architecture of Fog computing which will have the characteristics authors are claiming to provide.    
+\end{itemize}
+
+\end{document}

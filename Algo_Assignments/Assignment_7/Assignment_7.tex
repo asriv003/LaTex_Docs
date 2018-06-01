@@ -1,0 +1,216 @@
+% homework template
+\documentclass[a4paper,11pt]{article}
+
+%package declarations:
+%geometry:set the geometry of page
+%ragged2e: left/right justify
+%fancyhdr: header/footers
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+%redefine maketitle
+%http://tex.stackexchange.com/questions/85343/left-align-abstract-title-and-authors
+\renewcommand{\maketitle}{%
+	
+	\Large
+ 	\textbf{CS 218, Spring 2017}
+ 	\hfill
+ 	Homework 7
+ 	\par
+ 	
+	\Large
+	Abhishek Kumar SRIVASTAVA
+	\hfill
+	\normalsize
+	\today
+ 	\par
+ 	Student ID: 861307778
+ 	\par
+ 	
+ 	%plagiarism statement
+ 	\begin{center}
+
+ 	\vspace{.2in}
+ 	
+ 	\textit{I certify that this submission represents my own original work }
+ 	\par
+	\vspace{.2in}
+	\makebox[2.4in]{\hrulefill}
+	\par
+
+ 	\end{center}
+ 	
+ 	\hrulefill
+ 	\par \vspace{2ex}
+ 	}
+
+
+%since using the assignment class, set the geometry
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+%set headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textbf{CS 218:} Homework 7}
+\fancyhead[RE,LO]{Abhishek Kumar Srivastava}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+%some custom commands, taken from stanford template
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}\thispagestyle{empty}
+	
+\maketitle
+
+\begin{solution}1 Let $P(i,j)$ be the minimum cost of sequential bin packing of $i$ elements into $j$ bins. When bin count is 1 it is nothing but sum of all the items which is the base cases. When bin count is more than 1 we will build upon previous case of when they have 1 bin by considering multiple combinations and dividing among possible bins. we will calculate the maximum weight for different combinations possible and then choosing the minimum value among that. Therefore the $P(i,j)$ can be recursively defined as follows:
+\begin{align*}
+P(i,j) =
+\begin{cases} 
+s_1 \hfill & \text{ $i = 1,j=1$ } \\
+P(i-1,j) + s_i \hfill & \text{ $i>1,j=1$ } \\
+\hfill \min_{1\le k\le i-1} (~max\{P(k,j-1),P(i,1)-P(k,1) \}) \hfill & \text{ $i>1,j>1$ }
+\end{cases}
+\end{align*}
+\begin{algorithm}
+	\caption{}
+	\label{Algorithm}
+	\begin{algorithmic}
+		\Function{SequentialBinMatching}{$S$[~],$k$}
+		\State $P[~][~]$
+		\Comment To store computed values
+		\For {$i$ = 1 to length($S$)}
+		\For {$j$ = 1 to  $k$}
+		\If {$j==1$}
+		\If{$i==1$}
+		\State $P[i][j] \gets S[1]$ \Comment Base Case
+		\Else
+		\State $P[i][j] \gets P[i-1][j] + S[i]$ \Comment Base Case
+		\EndIf
+		\Else
+		\For {$l$ = 1 to $i-1$} \Comment Recursive Case
+		\State $min\_max\_wt \gets min(~min\_max\_wt,~max(P[k][j-1],~P[i][1] - P[k][1])~)$
+		\EndFor
+		\State $P[i][j] \gets min\_max\_wt$
+		\EndIf
+		\EndFor
+		\EndFor
+		\State return P[length($S$)][$k$]
+		\EndFunction	
+	\end{algorithmic} 
+\end{algorithm}\\\\
+The outermost loop takes $\mathbf{O(n)}$ time to iterate over list of $n$ items. Its inner loop takes $\mathbf{O(k)}$ to iterate over k bins. The innermost for loop takes $\mathbf{O(n)}$ time to compute the $min\_max\_wt$. Therefore the overall time complexity of the algorithm is $\mathbf{O(n^2k)}$. We are also storing the results of all the sub-problems in a table (of dimension $n\times k$). Therefore the \textbf{space complexity} of the algorithm is $\mathbf{O(nk)}$.	
+\end{solution}
+\newpage
+\begin{solution}2 Let $P(i,j)$ be the minimum weight of cross-free matching where $i$ is $i^{th}$ element in $X$ $i.e$ $x_i$ \& $j$ is  $j^{th}$ element in $Y$ $i.e$ $y_j$ in $G = (X, Y, X \times Y )$ for $X = \{x_1, . . . , x_i\}$, $Y = \{y_1, . . . , y_j\}$. When there is only 1 element in $X$ it is a base case and we will simply assign that weight value. For the case when $i$ $>$ $j$ weight cost for it will be infinite since we are assuming only cases where edges are not crossed. And for the last case we consider edge which result in min weight cost. Therefore we can define $P(x_i,y_j)$ recursively as follows:
+	\begin{align*}
+	P(i,j) =
+	\begin{cases} 
+	w_{1,1}    \hfill & \text{ $i = 1$ } \\
+	\infty    \hfill & \text{ $i>j$ } \\
+	\hfill \min \{P(i-1,j-1)+w_{i,j}~,~P(i,j-1)\} \hfill & \text{ $i\le j$ }
+	\end{cases}
+	\end{align*}
+	\begin{algorithm}
+		\caption{}
+		\label{Algorithm}
+		\begin{algorithmic}
+			\Function{FindCrossFreeMatching}{$X[~],Y[~],w[~][~]$}
+			\State $P[~][~]$
+			\Comment Stores the previously computed values
+			\State $M$
+			\Comment Stores the edges part of the matching
+			\For {$i$ in length($X$)}
+			\For {$j$ in length($Y$)}
+			\If {$i == 1$}
+			\State $P[i][j] \gets w[1][1]$
+			\EndIf
+			\If {$i > j$}
+			\State $P[i][j] \gets \infty$
+			\Else
+			\If {$P[i-1][j-1] + w[i][j] < P[i][j-1]$}
+			\State $P[i][j] \gets P[i-1][j-1] + w[i][j]$
+			\State $M.add((X[i],Y[j]))$
+			\Else
+			\State $P[i][j] \gets P[i][j-1]$
+			\EndIf
+			\EndIf
+			\EndFor
+			\EndFor
+			\State return M 
+			\EndFunction	
+		\end{algorithmic} 
+	\end{algorithm}\\
+	As we are iterating over $X$ in the outer loop and over $Y$ in the inner loop, the \textbf{time complexity} of the above algorithm is $\mathbf{O(nm)}$. We are also storing the results of all the sub-problems in a table (of dimension $n\times m$). Therefore the \textbf{space complexity} of the algorithm is $\mathbf{O(nm)}$.
+
+\end{solution} 
+\newpage
+\begin{solution}3 \textbf{Part 1.} Let $P(i,j)$ be the probability of obtaining $j$ heads when $i$ coins are tossed independently at random. When $i$ $<$ $j$ probability will be 0. When $j$ = 0 it is multiplication of $1-p_i$. When $j$ $\ne$ 0 , $j^{th}$ coin is tossed it can be either be heads with $p_j$ probability or be tails with $(1-p_j)$ probability. Therefore the $P(i,j)$ can be recursively defined as follows:
+	\begin{align*}
+	P(x_i,y_j) =
+	\begin{cases} 
+	0    \hfill & \text{ $i<j$ } \\
+	1-p_1    \hfill & \text{ $i=1,j=0$ } \\
+	P(i-1,j)\cdot(1-p_i)    \hfill & \text{ $i>1,j=0$ } \\
+	\hfill P(i-1,j)\cdot(1-p_i)+P(i-1,j-1)\cdot(p_i) \hfill & \text{ $i\ge j,j\ge 0$ }
+	\end{cases}
+	\end{align*}
+
+	\begin{algorithm}
+		\caption{}
+		\label{Algorithm}
+		\begin{algorithmic}
+			\Function{FindProbability}{$p[~]$, $k$}
+			\State $P[~][~]$
+			\Comment Stores the previously computed values
+			\For {$i$ = 1 to $length(p)$}
+			\For {$j$ = 0 to $k$}
+			\If {$i<j$}
+			\State $P[i][j] \gets 0$
+			\Else
+			\If {$j==0$}
+			\If { $i==1$}
+			\State $P[i][j] \gets (1-p[1])$
+			\Else
+			\State $P[i][j] \gets P[i-1][j]\cdot(1-p[i])$
+			\EndIf
+			\Else
+			\State $P[i][j] \gets P[i-1][j]\cdot(1-p[i])+P[i-1][j-1]\cdot p[i]$
+			\EndIf
+			\EndIf
+			\EndFor
+			\EndFor
+			\State return P[$length(p)$][$k$] 
+			\EndFunction	
+		\end{algorithmic}
+	\end{algorithm}
+	Now the outer loop executes $n$ times and the inner loop executes $k$ time where $k \in [0,n]$. Therefore the worst case complexity of the above algorithm will be $\mathbf{O(n^2)}$ when $\mathbf{k=n}$.\\\\
+	\textbf{2.} Consider $p_i$ to be probability that the $i^{th}$ coin comes up heads and $q_i = 1-p_i$ to be the probability that the $i^{th}$ coin comes up tails. Now $g(x)$ can be represented as following product.
+	\begin{align*}
+	g(x) &= \prod_{k=1}^{n} (p_kx+q_k)\\
+	&= \prod_{k=1}^{n/2} (p_kx+q_k) * \prod_{k=n/2+1}^{n} (p_kx+q_k)
+	\end{align*}
+	The product can be computed recursively by dividing it in two subproblems of half the input size and multiplying the result of the two sub-problems to get the answer to the original problem. Time complexity for multiplication of two polynomials of degree $\frac{n}{2}$ using $\mathbf{FFT}$ is $\mathbf{O(\frac{n}{2}*log(\frac{n}{2}))} \le \mathbf{O(n*log~n)}$. Therefore recurrence relation can be represented as follows:
+	\begin{align*}
+	T(n) &= 2\cdot T(\frac{n}{2}) + O(n*log~n)\\
+	\therefore T(n)&= O(n\cdot log^2{n}) && \text{MT case(II) with a=2, b=2, k=1, f(n) = O(n*log~n)}
+	\end{align*}
+\end{solution}
+\end{document}

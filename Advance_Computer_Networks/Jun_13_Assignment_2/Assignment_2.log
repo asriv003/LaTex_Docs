@@ -1,0 +1,831 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.4)  13 JUN 2017 18:23
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Assignment_2.tex
+(./Assignment_2.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
+Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+)
+\CenteringLeftskip=\skip43
+\RaggedLeftLeftskip=\skip44
+\RaggedRightLeftskip=\skip45
+\CenteringRightskip=\skip46
+\RaggedLeftRightskip=\skip47
+\RaggedRightRightskip=\skip48
+\CenteringParfillskip=\skip49
+\RaggedLeftParfillskip=\skip50
+\RaggedRightParfillskip=\skip51
+\JustifyingParfillskip=\skip52
+\CenteringParindent=\skip53
+\RaggedLeftParindent=\skip54
+\RaggedRightParindent=\skip55
+\JustifyingParindent=\skip56
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip57
+\f@ncyO@elh=\skip58
+\f@ncyO@erh=\skip59
+\f@ncyO@olh=\skip60
+\f@ncyO@orh=\skip61
+\f@ncyO@elf=\skip62
+\f@ncyO@erf=\skip63
+\f@ncyO@olf=\skip64
+\f@ncyO@orf=\skip65
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
+\@mathmargin=\skip66
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks16
+\ex@=\dimen111
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen112
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count90
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count91
+\leftroot@=\count92
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count93
+\DOTSCASE@=\count94
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen113
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+\macc@depth=\count95
+\c@MaxMatrixCols=\count96
+\dotsspace@=\muskip10
+\c@parentequation=\count97
+\dspbrk@lvl=\count98
+\tag@help=\toks17
+\row@=\count99
+\column@=\count100
+\maxfields@=\count101
+\andhelp@=\toks18
+\eqnshift@=\dimen114
+\alignsep@=\dimen115
+\tagshift@=\dimen116
+\tagwidth@=\dimen117
+\totwidth@=\dimen118
+\lineht@=\dimen119
+\@envbody=\toks19
+\multlinegap=\skip67
+\multlinetaggap=\skip68
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks21
+\thm@bodyfont=\toks22
+\thm@headfont=\toks23
+\thm@notefont=\toks24
+\thm@headpunct=\toks25
+\thm@preskip=\skip69
+\thm@postskip=\skip70
+\thm@headsep=\skip71
+\dth@everypar=\toks26
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 95.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count102
+))
+\Gin@req@height=\dimen120
+\Gin@req@width=\dimen121
+)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count103
+\float@exts=\toks27
+\float@box=\box28
+\@float@everytoks=\toks28
+\@floatcapt=\box29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks29
+\c@algorithm=\count104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count105
+\c@ALG@rem=\count106
+\c@ALG@nested=\count107
+\ALG@tlm=\skip72
+\ALG@thistlm=\skip73
+\c@ALG@Lnr=\count108
+\c@ALG@blocknr=\count109
+\c@ALG@storecount=\count110
+\c@ALG@tmpcounter=\count111
+\ALG@tmplength=\skip74
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen122
+\WF@size=\dimen123
+\c@WF@wrappedlines=\count112
+\WF@box=\box30
+\WF@everypar=\toks30
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+\epsfxsize=\dimen124
+\epsfysize=\dimen125
+)
+
+Package geometry Warning: Over-specification in `h'-direction.
+    `width' (597.50787pt) is ignored.
+
+
+Package geometry Warning: Over-specification in `v'-direction.
+    `height' (845.04684pt) is ignored.
+
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 63.
+
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 64.
+
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 65.
+
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 66.
+
+(./Assignment_2.aux)
+\openout1 = `Assignment_2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=731.23584pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 79.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count113
+\scratchdimen=\dimen126
+\scratchbox=\box31
+\nofMPsegments=\count114
+\nofMParguments=\count115
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count116
+\MPscratchDim=\dimen127
+\MPnumerator=\count117
+\makeMPintoPDFobject=\count118
+\everyMPtoPDFconversion=\toks32
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+<sdn_0_0.png, id=1, 932.48375pt x 345.29pt>
+File: sdn_0_0.png Graphic file (type png)
+ <use sdn_0_0.png>
+Package pdftex.def Info: sdn_0_0.png used on input line 87.
+(pdftex.def)             Requested size: 433.61469pt x 166.22203pt.
+
+<sdn_0_1.png, id=2, 770.88pt x 245.91875pt>
+File: sdn_0_1.png Graphic file (type png)
+ <use sdn_0_1.png>
+Package pdftex.def Info: sdn_0_1.png used on input line 92.
+(pdftex.def)             Requested size: 433.61894pt x 140.92937pt.
+
+<sdn_20_5.png, id=3, 778.91pt x 227.85126pt>
+File: sdn_20_5.png Graphic file (type png)
+ <use sdn_20_5.png>
+Package pdftex.def Info: sdn_20_5.png used on input line 98.
+(pdftex.def)             Requested size: 433.61943pt x 126.47632pt.
+
+<sdn_20_0.png, id=4, 727.71875pt x 559.08875pt>
+File: sdn_20_0.png Graphic file (type png)
+ <use sdn_20_0.png>
+Package pdftex.def Info: sdn_20_0.png used on input line 104.
+(pdftex.def)             Requested size: 433.6365pt x 343.2958pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_1.png, id=5, 911.405pt x 375.4025pt>
+File: sdn_1.png Graphic file (type png)
+ <use sdn_1.png>
+Package pdftex.def Info: sdn_1.png used on input line 110.
+(pdftex.def)             Requested size: 433.63112pt x 216.81136pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_9.png, id=6, 727.71875pt x 225.84375pt>
+File: sdn_9.png Graphic file (type png)
+ <use sdn_9.png>
+Package pdftex.def Info: sdn_9.png used on input line 115.
+(pdftex.def)             Requested size: 433.6365pt x 162.6177pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_8.png, id=7, 833.1125pt x 226.8475pt>
+File: sdn_8.png Graphic file (type png)
+ <use sdn_8.png>
+Package pdftex.def Info: sdn_8.png used on input line 120.
+(pdftex.def)             Requested size: 433.62779pt x 126.47298pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_a.png, id=8, 757.83125pt x 297.11pt>
+File: sdn_a.png Graphic file (type png)
+ <use sdn_a.png>
+Package pdftex.def Info: sdn_a.png used on input line 125.
+(pdftex.def)             Requested size: 433.62189pt x 180.68373pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_ans_a.png, id=9, 615.29875pt x 412.54124pt>
+File: sdn_ans_a.png Graphic file (type png)
+ <use sdn_ans_a.png>
+Package pdftex.def Info: sdn_ans_a.png used on input line 132.
+(pdftex.def)             Requested size: 433.62607pt x 307.15161pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_3.png, id=10, 648.4225pt x 307.1475pt>
+File: sdn_3.png Graphic file (type png)
+ <use sdn_3.png>
+Package pdftex.def Info: sdn_3.png used on input line 137.
+(pdftex.def)             Requested size: 433.6295pt x 198.74365pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_4.png, id=11, 623.32875pt x 258.9675pt>
+File: sdn_4.png Graphic file (type png)
+ <use sdn_4.png>
+Package pdftex.def Info: sdn_4.png used on input line 142.
+(pdftex.def)             Requested size: 433.62596pt x 198.74962pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_5.png, id=12, 532.99126pt x 104.39pt>
+File: sdn_5.png Graphic file (type png)
+ <use sdn_5.png>
+Package pdftex.def Info: sdn_5.png used on input line 147.
+(pdftex.def)             Requested size: 433.63176pt x 90.34229pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_6.png, id=13, 497.86pt x 105.39375pt>
+File: sdn_6.png Graphic file (type png)
+ <use sdn_6.png>
+Package pdftex.def Info: sdn_6.png used on input line 152.
+(pdftex.def)             Requested size: 433.6285pt x 90.33932pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_7_1.png, id=14, 1116.17pt x 648.4225pt>
+File: sdn_7_1.png Graphic file (type png)
+ <use sdn_7_1.png>
+Package pdftex.def Info: sdn_7_1.png used on input line 157.
+(pdftex.def)             Requested size: 505.8825pt x 307.15298pt.
+
+Overfull \hbox (50.6384pt too wide) in paragraph at lines 157--158
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_12.png, id=15, 576.1525pt x 509.905pt>
+File: sdn_12.png Graphic file (type png)
+ <use sdn_12.png>
+Package pdftex.def Info: sdn_12.png used on input line 162.
+(pdftex.def)             Requested size: 433.6342pt x 325.23325pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_ans_b.png, id=16, 612.2875pt x 368.37625pt>
+File: sdn_ans_b.png Graphic file (type png)
+ <use sdn_ans_b.png>
+Package pdftex.def Info: sdn_ans_b.png used on input line 169.
+(pdftex.def)             Requested size: 433.61539pt x 271.00903pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_20_1.png, id=17, 805.0075pt x 334.24875pt>
+File: sdn_20_1.png Graphic file (type png)
+ <use sdn_20_1.png>
+Package pdftex.def Info: sdn_20_1.png used on input line 174.
+(pdftex.def)             Requested size: 433.61665pt x 216.81538pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_14_1.png, id=18, 744.7825pt x 348.30125pt>
+File: sdn_14_1.png Graphic file (type png)
+ <use sdn_14_1.png>
+Package pdftex.def Info: sdn_14_1.png used on input line 179.
+(pdftex.def)             Requested size: 433.63336pt x 216.81082pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_16_3.png, id=19, 754.82pt x 327.2225pt>
+File: sdn_16_3.png Graphic file (type png)
+ <use sdn_16_3.png>
+Package pdftex.def Info: sdn_16_3.png used on input line 184.
+(pdftex.def)             Requested size: 433.61502pt x 216.81133pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_14_2.png, id=20, 756.8275pt x 599.23875pt>
+File: sdn_14_2.png Graphic file (type png)
+ <use sdn_14_2.png>
+Package pdftex.def Info: sdn_14_2.png used on input line 189.
+(pdftex.def)             Requested size: 433.62497pt x 361.35646pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_14_B2_1.png, id=21, 523.9575pt x 122.4575pt>
+File: sdn_14_B2_1.png Graphic file (type png)
+ <use sdn_14_B2_1.png>
+Package pdftex.def Info: sdn_14_B2_1.png used on input line 194.
+(pdftex.def)             Requested size: 433.62941pt x 108.40756pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_14_B2__2.png, id=22, 492.84125pt x 120.45pt>
+File: sdn_14_B2__2.png Graphic file (type png)
+ <use sdn_14_B2__2.png>
+Package pdftex.def Info: sdn_14_B2__2.png used on input line 199.
+(pdftex.def)             Requested size: 433.64146pt x 108.40765pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_15_1.png, id=23, 1132.23pt x 630.355pt>
+File: sdn_15_1.png Graphic file (type png)
+ <use sdn_15_1.png>
+Package pdftex.def Info: sdn_15_1.png used on input line 204.
+(pdftex.def)             Requested size: 505.88802pt x 307.14532pt.
+
+Overfull \hbox (50.6439pt too wide) in paragraph at lines 204--205
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_ans_c.png, id=24, 632.3625pt x 577.15625pt>
+File: sdn_ans_c.png Graphic file (type png)
+ <use sdn_ans_c.png>
+Package pdftex.def Info: sdn_ans_c.png used on input line 211.
+(pdftex.def)             Requested size: 433.62886pt x 361.36465pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_20_2.png, id=25, 795.97375pt x 626.34pt>
+File: sdn_20_2.png Graphic file (type png)
+ <use sdn_20_2.png>
+Package pdftex.def Info: sdn_20_2.png used on input line 216.
+(pdftex.def)             Requested size: 433.62099pt x 361.35645pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_16_1_1.png, id=26, 716.6775pt x 326.21875pt>
+File: sdn_16_1_1.png Graphic file (type png)
+ <use sdn_16_1_1.png>
+Package pdftex.def Info: sdn_16_1_1.png used on input line 221.
+(pdftex.def)             Requested size: 433.62952pt x 216.81825pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: sdn_16_3.png Graphic file (type png)
+<use sdn_16_3.png>
+Package pdftex.def Info: sdn_16_3.png used on input line 226.
+(pdftex.def)             Requested size: 433.61502pt x 216.81133pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_18_2.png, id=27, 749.80125pt x 758.835pt>
+File: sdn_18_2.png Graphic file (type png)
+ <use sdn_18_2.png>
+Package pdftex.def Info: sdn_18_2.png used on input line 231.
+(pdftex.def)             Requested size: 433.62651pt x 433.62886pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_17_C2_1.png, id=28, 752.8125pt x 139.52126pt>
+File: sdn_17_C2_1.png Graphic file (type png)
+ <use sdn_17_C2_1.png>
+Package pdftex.def Info: sdn_17_C2_1.png used on input line 236.
+(pdftex.def)             Requested size: 433.63345pt x 101.18118pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_17_C2_2.png, id=29, 587.19376pt x 151.56625pt>
+File: sdn_17_C2_2.png Graphic file (type png)
+ <use sdn_17_C2_2.png>
+Package pdftex.def Info: sdn_17_C2_2.png used on input line 241.
+(pdftex.def)             Requested size: 433.62059pt x 108.40604pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_18_3.png, id=30, 1108.14pt x 666.49pt>
+File: sdn_18_3.png Graphic file (type png)
+ <use sdn_18_3.png>
+Package pdftex.def Info: sdn_18_3.png used on input line 246.
+(pdftex.def)             Requested size: 433.6101pt x 314.3792pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_19_1.png, id=31, 962.59625pt x 239.89626pt>
+File: sdn_19_1.png Graphic file (type png)
+ <use sdn_19_1.png>
+Package pdftex.def Info: sdn_19_1.png used on input line 251.
+(pdftex.def)             Requested size: 433.61964pt x 126.47452pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_19_2.png, id=32, 965.6075pt x 250.9375pt>
+File: sdn_19_2.png Graphic file (type png)
+ <use sdn_19_2.png>
+Package pdftex.def Info: sdn_19_2.png used on input line 256.
+(pdftex.def)             Requested size: 433.62059pt x 126.47545pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_19_3.png, id=33, 958.58125pt x 312.16624pt>
+File: sdn_19_3.png Graphic file (type png)
+ <use sdn_19_3.png>
+Package pdftex.def Info: sdn_19_3.png used on input line 261.
+(pdftex.def)             Requested size: 505.89552pt x 144.54134pt.
+
+Overfull \hbox (50.65141pt too wide) in paragraph at lines 261--262
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_ans_d.png, id=34, 631.35875pt x 689.57625pt>
+File: sdn_ans_d.png Graphic file (type png)
+ <use sdn_ans_d.png>
+Package pdftex.def Info: sdn_ans_d.png used on input line 268.
+(pdftex.def)             Requested size: 433.62456pt x 415.55873pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_23.png, id=35, 723.70375pt x 563.10374pt>
+File: sdn_23.png Graphic file (type png)
+ <use sdn_23.png>
+Package pdftex.def Info: sdn_23.png used on input line 273.
+(pdftex.def)             Requested size: 433.61824pt x 343.28658pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_23_6.png, id=36, 843.15pt x 224.84pt>
+File: sdn_23_6.png Graphic file (type png)
+ <use sdn_23_6.png>
+Package pdftex.def Info: sdn_23_6.png used on input line 278.
+(pdftex.def)             Requested size: 433.62886pt x 151.77417pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_21_1.png, id=37, 959.585pt x 118.4425pt>
+File: sdn_21_1.png Graphic file (type png)
+ <use sdn_21_1.png>
+Package pdftex.def Info: sdn_21_1.png used on input line 283.
+(pdftex.def)             Requested size: 469.7615pt x 79.49883pt.
+
+Overfull \hbox (14.5174pt too wide) in paragraph at lines 283--284
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_21_2.png, id=38, 814.04124pt x 135.50626pt>
+File: sdn_21_2.png Graphic file (type png)
+ <use sdn_21_2.png>
+Package pdftex.def Info: sdn_21_2.png used on input line 288.
+(pdftex.def)             Requested size: 433.61353pt x 90.34003pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_21_5.png, id=39, 770.88pt x 324.21124pt>
+File: sdn_21_5.png Graphic file (type png)
+ <use sdn_21_5.png>
+Package pdftex.def Info: sdn_21_5.png used on input line 293.
+(pdftex.def)             Requested size: 433.61894pt x 216.81474pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_21_6.png, id=40, 805.0075pt x 321.2pt>
+File: sdn_21_6.png Graphic file (type png)
+ <use sdn_21_6.png>
+Package pdftex.def Info: sdn_21_6.png used on input line 298.
+(pdftex.def)             Requested size: 433.61665pt x 216.81535pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_22_D_2_1.png, id=41, 597.23125pt x 122.4575pt>
+File: sdn_22_D_2_1.png Graphic file (type png)
+ <use sdn_22_D_2_1.png>
+Package pdftex.def Info: sdn_22_D_2_1.png used on input line 303.
+(pdftex.def)             Requested size: 433.62402pt x 101.18002pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_22_D_2_2.png, id=42, 564.1075pt x 104.39pt>
+File: sdn_22_D_2_2.png Graphic file (type png)
+ <use sdn_22_D_2_2.png>
+Package pdftex.def Info: sdn_22_D_2_2.png used on input line 308.
+(pdftex.def)             Requested size: 433.62386pt x 101.18329pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_23_5.png, id=43, 1141.26375pt x 654.445pt>
+File: sdn_23_5.png Graphic file (type png)
+ <use sdn_23_5.png>
+Package pdftex.def Info: sdn_23_5.png used on input line 313.
+(pdftex.def)             Requested size: 433.61508pt x 314.36969pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sdn_21_4.png, id=44, 1393.205pt x 442.65375pt>
+File: sdn_21_4.png Graphic file (type png)
+ <use sdn_21_4.png>
+Package pdftex.def Info: sdn_21_4.png used on input line 318.
+(pdftex.def)             Requested size: 433.61104pt x 180.67868pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./sdn_0_0.png> <./sdn_0_1.
+png> <./sdn_20_5.png>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[2 <./sdn_20_0.png> <./sdn_1.png>] [3 <./sdn_9.png> <./sdn_8.png> <./sdn_a.png>
+] [4 <./sdn_ans_a.png> <./sdn_3.png>] [5 <./sdn_4.png> <./sdn_5.png> <./sdn_6.p
+ng>] [6 <./sdn_7_1.png> <./sdn_12.png>] [7 <./sdn_ans_b.png> <./sdn_20_1.png>]
+[8 <./sdn_14_1.png> <./sdn_16_3.png>] [9 <./sdn_14_2.png> <./sdn_14_B2_1.png> <
+./sdn_14_B2__2.png>] [10 <./sdn_15_1.png> <./sdn_ans_c.png>] [11 <./sdn_20_2.pn
+g> <./sdn_16_1_1.png>] [12 <./sdn_18_2.png>] [13 <./sdn_17_C2_1.png> <./sdn_17_
+C2_2.png> <./sdn_18_3.png>] [14 <./sdn_19_1.png> <./sdn_19_2.png> <./sdn_19_3.p
+ng>] [15 <./sdn_ans_d.png>] [16 <./sdn_23.png> <./sdn_23_6.png> <./sdn_21_1.png
+>] [17 <./sdn_21_2.png> <./sdn_21_5.png> <./sdn_21_6.png>] [18 <./sdn_22_D_2_1.
+png> <./sdn_22_D_2_2.png> <./sdn_23_5.png>] [19 <./sdn_21_4.png>]
+(./Assignment_2.aux) ) 
+Here is how much of TeX's memory you used:
+ 4009 strings out of 493029
+ 54708 string characters out of 6136234
+ 131016 words of memory out of 5000000
+ 7446 multiletter control sequences out of 15000+600000
+ 4853 words of font info for 18 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 37i,10n,43p,278b,282s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on Assignment_2.pdf (19 pages, 1831903 bytes).
+PDF statistics:
+ 126 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 221 words of extra memory for PDF output out of 10000 (max. 10000000)
+
